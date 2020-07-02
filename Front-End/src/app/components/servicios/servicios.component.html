@@ -1,0 +1,68 @@
+<div class="container mt-3">
+    <form class="card" #servicioForm="ngForm">
+      <article id="cabecera">
+        <br><br>
+        <h2 class="text-center">Gesti&oacute;n de Servicios</h2>
+        <br><br>               
+      </article>
+      <div class="card-body">
+        
+        <!-- Nombre -->
+        <div class="row form-group">
+          <label class="col-sm-12 col-md-4 h4" ><b>Nombre: </b></label>
+          <input class="form-control col-sm-12 col-md-7" type="text" maxlength="50"  placeholder="Introduce Nombre..."  required  />
+        </div> 
+   
+        <!-- Imagen -->
+        <div class="row form-group">
+          <label class="col-sm-12 col-md-4 h4" for="">Imagen: </label>
+          <div class="col-sm-12 col-md-1">
+            <img  src="#" alt="" width="50px" height="50px">          
+          </div>
+          <div class="col-sm-12 col-md-7">
+          <input class="form-control col-sm-12 col-md-8" type="file"  name="txtImagen" required
+         />
+          </div>        
+        </div>
+  
+        <!-- Activo -->
+        <div class="row form-group">
+          <label class="col-sm-12 col-md-4 h4" for="idoption">Activo: </label>
+          <input type="radio" class="form-control form-control-sm col-md-2" name="option"  id="idoption"  value="true" > Si
+          <input type="radio" class="form-control form-control-sm col-md-2" name="option"  id="idoption"  value="false" > No
+        </div>
+
+        <!-- Botones -->
+        <div class="form-group text-center">           
+          <button type="button" class="btn btn-primary mr-1 ">Guardar</button>
+          <button type="button" class="btn btn-primary mr-1 ">Modificar</button>
+          <button type="reset" class="btn btn-primary mr-1" >Limpiar/Actualizar</button> 
+        </div>
+      </div>
+    </form>
+  
+    <h2 class="text-center mt-3">Informaci&oacute;n de Servicios</h2>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre/s</th>
+            <th>Imagen</th>
+            <th>Activo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <th></th>
+            <td><img src="#" alt="" width="50px" height="50px"></td>
+            <td></td>
+            <td> 
+              <button class="btn btn-primary"  >Seleccionar</button>          
+              <button class="btn btn-danger"  >Borrar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

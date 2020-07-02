@@ -1,0 +1,96 @@
+#cabecera{
+    margin: 0;
+    /* background: url(assets/img/foto.jpg) no-repeat center fixed;background-color:red ;*/
+	background-image: url('../../../assets/img/foto.jpg');
+	color:white;
+	background-size:cover ;
+}
+/* Formulario estilo */
+#FORMULARIO{    
+    font: 1em Helvetica;
+    width: auto;
+    margin-top: 1rem;
+	margin-left: 5rem;
+	margin-right: 5rem;
+     box-shadow: 
+        0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
+        0px 4px 20px rgba( 0,0,0,0.33 );
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.registro {
+  
+  padding: 30px 20px;
+  background-color: white;
+  text-align: center;
+  border-radius: 5px 0 0 5px;
+}
+
+#registrotitulo{
+    color: #333333;
+    font-size: 24px;
+    font-weight: bold;
+   
+    
+}
+
+[type=text] {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  height: 45px;
+  line-height: 45px;  
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: rgba(0,0,0,.4);
+}
+
+[type=submit] {
+  margin-top: 25px;
+  width: 80%;
+  border: 0;
+  border-radius: 5px;
+  height: 50px;
+  color: white;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+[type='text']:focus {
+  outline: none;
+  border-color: #53CACE;
+}
+
+[type='email'] {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  height: 45px;
+  line-height: 45px;  
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: rgba(0,0,0,.4);
+}
+
+[type=reset] {
+  margin-top: 25px;
+  width: 80%;
+  border: 0;
+  background: linear-gradient(red, black);
+  border-radius: 5px;
+  height: 50px;
+  color: white;
+  font-weight: 400;
+  font-size: 1em;
+}
+.imagen{
+	background-image: url('../../../assets/img/contantos.jpg') ;
+	background-attachment: auto;	
+	 background-size: contain;
+}

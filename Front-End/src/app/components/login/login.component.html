@@ -1,0 +1,49 @@
+<div class="row">
+<!-- Boton de Registro-->
+<a href="#" class="btn btn-outline-primary mr-2 col-md-12 "  data-toggle="modal" data-target="#exampleModal"><span class=" glyphicon glyphicon-user  "></span><i class="fa fa-user" aria-hidden="true"></i> Registrarse </a>
+<!-- Boton de Login-->
+<a href="#" class="btn btn-outline-success mr-2 col-md-12  "  data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-log-in "></span><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
+</div>
+<!-- Modal de Login-->
+<!-- Modal -->
+<div class="modal fade in" id="exampleModal" style="height: 967px;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center alim-items-center text-center bg-dark text-ligth">
+            <h4 class="tituloPrest text-center h3 justify-content-center alim-items-center" id="myModalLabel"><b>Login</b></h4>         
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <!-- Formulario de Registro -->    
+            <div class="container">
+                <p class="fristLink text-center h5"><b>Complete el formulario para Registrarse:</b></p>
+                <div class="row">
+                    <div class="formus col-md-12">
+                        <form class="login100-form validate-form ">
+
+                            <div class="wrap-input100 validate-input row" data-validate = "Enter username">
+                                <i class="fa fa-user fa-3x col-md-2" aria-hidden="true"></i>
+                                <input class="input100 col-md-9" type="text" id="userid" name="userid" placeholder="Usuario" [(ngModel)]="userform.usuario">
+                                <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                            </div>
+        
+                            <div class="wrap-input100 validate-input row" data-validate="Enter password">
+                                <i class="fa fa-key fa-3x col-md-2" aria-hidden="true"></i>
+                                <input class="input100 col-md-9" type="password" id="password" name="password" placeholder="Constraseña" [(ngModel)]="userform.password">
+                                <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                            </div>
+        
+                            <div class="container-login100-form-btn m-3 ">
+                                <button class="login100-form-btn" (click)="login()">  Registrarse </button>
+                            </div>
+                            <div class="alert-danger">{{msglogin}}</div>
+                        </form>
+                </div>        
+            </div>          
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="container">
+  <form class="card" #pagoForm="ngForm">
+    <article id="cabecera">
+      <br><br>
+      <h2 class="text-center">Gesti&oacute;n de Pagos</h2>
+      <br>
+      <p class="text-center">Complete el Formulario para el pago</p>
+      <br>               
+    </article>
+    <div class="card-body">
+      <!-- Afiliado -->
+      <div class="row form-group">
+        <label class="col-sm-12 col-md-4 h4"><b>Afiliado: </b></label>
+        <select class="form-control col-sm-12 col-md-7" name="cmbAfiliado" required [(ngModel)]="_pago.afiliado">
+          <option value="{{item._id}}" *ngFor="let item of _afiliados"> {{ item.apellido | uppercase }}, {{ item.nombres }} - DNI {{ item.dni | number:'1.0-2' }}</option>
+        </select>
+      </div>
+      <!-- Monto -->
+      <div class="row form-group">
+        <label class="col-sm-12 col-md-4 h4"><b>Monto: </b></label>
+        <input class="form-control col-sm-12 col-md-7" type="text" name="txtMonto" [(ngModel)]="_pago.monto" required pattern="(^[1-9][0-9]*.[0-9][0-9]|^[1-9][0-9]*$|^[1-9][0-9]*.[0-9])" #txtMonto="ngModel" />
+        <div *ngIf="txtMonto.invalid && (txtMonto.dirty || txtMonto.touched)" class="alert alert-danger">
+          <div *ngIf="txtMonto.errors.required">
+            El Monto es requerido
+          </div>
+          <div *ngIf="txtMonto.errors.pattern">
+            Solo se admiten precios mayores a ceros y hasta dos decimales
+          </div>
+        </div>
+      </div>
+      <!-- Año -->
+      <div class="row form-group">
+        <label class="col-sm-12 col-md-4 h4"><b>Año: </b></label>
+        <input class="form-control col-sm-12 col-md-7" type="text" name="txtAnio" [(ngModel)]="_pago.anio" required pattern="[2-9][0-9][0-9][0-9]" minlength="4" maxlength="4" #txtAnio="ngModel" />
+        <div *ngIf="txtAnio.invalid && (txtAnio.dirty || txtAnio.touched)" class="alert alert-danger">
+          <div *ngIf="txtAnio.errors.required">
+            El Año es requerido
+          </div>
+          <div *ngIf="txtAnio.errors.minlength">
+            El Año debe ser de 4 caracteres
+          </div>
+          <div *ngIf="txtAnio.errors.pattern">
+            Ingrese un año valido
+          </div>
+        </div>
+      </div>
+      <!-- Mes -->
+      <div class="row form-group">
+        <label class="col-sm-12 col-md-4 h4" ><b>Mes: </b></label>
+        <select class="form-control col-sm-12 col-md-7" name="cmbMes" required [(ngModel)]="_pago.mes">
+          <option value="1">Enero</option>
+          <option value="2">Febrero</option>
+          <option value="3">Marzo</option>
+          <option value="4">Abril</option>
+          <option value="5">Mayo</option>
+          <option value="6">Junio</option>
+          <option value="7">Julio</option>
+          <option value="8">Agosto</option>
+          <option value="9">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+      </div>
+      <!-- Botones -->
+      <div class="form-group text-center">
+        <button type="button" class="btn btn-primary mr-1" [disabled]="!pagoForm.form.valid" (click)="agregarPago()">Guardar</button>
+        <button type="reset" class="btn btn-primary mr-1" >Limpiar</button> 
+      </div>
+    </div>
+  </form>
+
+  <h2 class="text-center mt-3">Informaci&oacute;n de Pagos</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Afiliado</th>
+          <th>Fecha</th>
+          <th>Monto</th>
+          <th>Mes</th>
+          <th>Año</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pago of _pagos">
+          <td>{{ pago.afiliado.apellido | uppercase}}, {{ pago.afiliado.nombres }} - {{ pago.afiliado.dni }}</td>
+          <td>{{ pago.fecha | date:"dd-MM-yyyy" }}</td>
+          <td>{{ pago.monto | currency}}</td>
+          <td>{{ pago.mes }}</td>
+          <td>{{ pago.anio }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

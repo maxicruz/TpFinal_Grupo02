@@ -1,0 +1,65 @@
+/* Codigo de Margen */
+.padre {
+  margin-top:1rem ; 
+	margin-bottom:1rem ;
+  padding: 1rem;
+  border: 2px solid #ccc;
+}
+/* 1. LOGO                */
+#logito{
+	margin-top: -20px;
+	
+	height: 70px;
+	padding: 0;
+}
+.tituloprincipal{
+	color:  #343a40;
+    font-size: 400%;
+    font-weight: bold;
+	letter-spacing: 20px;
+    text-align: center;
+}
+.tituloprincipal:hover{
+	color: #e5633f;
+	text-decoration: none;
+}
+.borde{
+	border-top:  1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+.borde2{
+	border-right:  1px solid #C00;
+	border-left: 1px solid #C00;
+}
+.textodiario{
+	font-family: 'Playfair Display', serif;
+}
+/* 2. MENU                */
+.login{	
+	font-size: 10%;    
+}
+nav{
+	color:#343a40;
+}
+.menuCSS3  a{
+	font-size: 1.3rem;/*->EFECTO DEL TAMA�O DE LA LETRA  */
+    background: rgba(255,255,255,1);
+	text-decoration: none;
+	color: #191C26;
+    border-radius:15px;
+}
+
+/* MENU: Efecto de las celda de la lista al pasar el cursor */
+.menuCSS3 li:hover , .menuCSS3 li a:hover ,.menuCSS3 a:hover {
+	color: #0662b9;border-radius:15px;
+	transition: .3s;
+	/* Gradiente de colores gris  --- color si efecto de  gradiente ->  background: #eaeaea; */    
+	background: rgba(217,217,217,1);
+	background: -moz-linear-gradient(top, rgba(217,217,217,1) 0%, rgba(209,209,209,1) 50%, rgba(199,199,199,1) 51%, rgba(242,242,242,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(217,217,217,1)), color-stop(50%, rgba(209,209,209,1)), color-stop(51%, rgba(199,199,199,1)), color-stop(100%, rgba(242,242,242,1)));
+	background: -webkit-linear-gradient(top, rgba(217,217,217,1) 0%, rgba(209,209,209,1) 50%, rgba(199,199,199,1) 51%, rgba(242,242,242,1) 100%);
+	background: -o-linear-gradient(top, rgba(217,217,217,1) 0%, rgba(209,209,209,1) 50%, rgba(199,199,199,1) 51%, rgba(242,242,242,1) 100%);
+	background: -ms-linear-gradient(top, rgba(217,217,217,1) 0%, rgba(209,209,209,1) 50%, rgba(199,199,199,1) 51%, rgba(242,242,242,1) 100%);
+	background: linear-gradient(to bottom, rgba(217,217,217,1) 0%, rgba(209,209,209,1) 50%, rgba(199,199,199,1) 51%, rgba(242,242,242,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9d9d9', endColorstr='#f2f2f2', GradientType=0 );
+}

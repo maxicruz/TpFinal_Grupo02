@@ -1,0 +1,10 @@
+#cabecera{
+    margin: 0;
+    /* background: url(assets/img/foto.jpg) no-repeat center fixed;background-color:red ;*/
+	background-image: url('../../../assets/img/foto.jpg');
+	color:white;
+	background-size:cover ;
+}
+
+
+
