@@ -9,6 +9,7 @@ import { CotactosComponent } from './components/cotactos/cotactos.component';
 import { EmailComponent } from './components/email/email.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { NovedadesComponent } from './components/novedades/novedades.component';
+import { NoticiaComponent } from './components/noticia/noticia.component';
 
 const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
 	{ path: 'email', component: EmailComponent },
 	{ path: 'pago', component: PagoComponent },
 	{ path: 'novedades', component: NovedadesComponent },
+	{ path: 'noticia', component: NoticiaComponent },
 	{ path: '**', pathMatch:'full',redirectTo:'home' }
 ];
 

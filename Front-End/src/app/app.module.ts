@@ -22,6 +22,8 @@ import { PagoComponent } from './components/pago/pago.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { NovedadesComponent } from './components/novedades/novedades.component';
+import { NoticiaComponent } from './components/noticia/noticia.component';
+import { AfiliadoComponent } from './components/afiliado/afiliado.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { NovedadesComponent } from './components/novedades/novedades.component';
     NovedadesComponent,
     ServiciosComponent,
     UsuarioComponent,
+    NoticiaComponent,
+    AfiliadoComponent,
   ],
   imports: [
     BrowserModule,

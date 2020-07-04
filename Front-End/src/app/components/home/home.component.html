@@ -1,45 +1,54 @@
-
 <!-- Cuerpo de la Pagina   -->
-<section class="" >      
+<section class="text-center" >      
 	<article id="cabecera">
 		<br>
-        <h2>CONTENIDO PRINCIPAL</h2>
+            <h1>CONTENIDO PRINCIPAL</h1>
+        <br>
         <div>
-			<p>Obra Social PRO LIVE es una empresa cuyo enfoque principal es el proteguer y dar coberturas a sus Clientes</p>
-        </div>
-        <div >
 			<h2>PRO - LIVE mejorando tu vida y dando un nuevo comienzo.</h2>
         </div>
-        <p class="h4 text-center">Obra Social PRO LIVE es una empresa cuyo enfoque principal es el proteguer y dar coberturas a sus Clientes.</p>
+            <p class="h4 text-center">Obra Social PRO LIVE es una empresa cuyo enfoque principal es el proteguer y dar coberturas a sus Clientes.</p>
         <br>
     </article>
 </section>   
 <section class="" >
-             <article id="actividad" class="container row">
-                <div class="card caja col-md-4 col-sm-12">
-                    <div class="contenidocaja ">
-                        <h2>Obra Social PRO LIVE</h2>
-                        <p>Obra Social PRO LIVE es una empresa cuyo enfoque principal es el proteguer y dar coberturas a sus Clientes a tra ves de sus diversos servicios y accesorias. De este modo poder mejor la calidad de vida de cada uno de ellos y a la ves facilitarselas.</p>
-                        <a  href="#" class="btn btn-danger"  >Mas Detalle</a>
-                    </div>
-                </div>
-                <div class="card caja  col-md-4 col-sm-12">
-                    <div class="contenidocaja">
-                        <h2>Obra Social PRO LIVE</h2>
-                        <p>Obra Social PRO LIVE es una empresa cuyo enfoque principal es el proteguer y dar coberturas a sus Clientes a tra ves de sus diversos servicios y accesorias. De este modo poder mejor la calidad de vida de cada uno de ellos y a la ves facilitarselas.</p>
-                        <a  href="#" class="btn btn-danger"  >Mas Detalle</a>
-                    </div>
-                </div>    
-                 <div class="card caja  col-md-4 col-sm-12">
-                    <div class="contenidocaja">
-                       <h2>Obra Social PRO LIVE</h2>
-                        <p>Obra Social PRO LIVE es una empresa cuyo enfoque principal es el proteguer y dar coberturas a sus Clientes a tra ves de sus diversos servicios y accesorias. De este modo poder mejor la calidad de vida de cada uno de ellos y a la ves facilitarselas.</p>
-                        <a  href="#" class="btn btn-danger"  >Mas Detalle</a>
-                    </div>
-                </div>           
-            </article> 
-         </section> 
-<app-noticias></app-noticias>    
+    <article id="actividad" class="container row">
+        <div class="card caja col-md-4 col-sm-12">
+            <div class="contenidocaja ">
+                <h2>Obra Social PRO LIVE</h2>
+                <p>Obra Social PRO LIVE es una empresa cuyo enfoque principal es el proteguer y dar coberturas a sus Clientes a tra ves de sus diversos servicios y accesorias. De este modo poder mejor la calidad de vida de cada uno de ellos y a la ves facilitarselas.</p>
+                <a  href="#" class="btn btn-danger"  >Mas Detalle</a>
+            </div>
+        </div>
+        <div class="card caja  col-md-4 col-sm-12">
+            <div class="contenidocaja">
+                <h2>Obra Social PRO LIVE</h2>
+                <p>Obra Social PRO LIVE es una empresa cuyo enfoque principal es el proteguer y dar coberturas a sus Clientes a tra ves de sus diversos servicios y accesorias. De este modo poder mejor la calidad de vida de cada uno de ellos y a la ves facilitarselas.</p>
+                <a  href="#" class="btn btn-danger"  >Mas Detalle</a>
+            </div>
+        </div>    
+        <div class="card caja  col-md-4 col-sm-12">
+            <div class="contenidocaja">
+                <h2>Obra Social PRO LIVE</h2>
+                <p>Obra Social PRO LIVE es una empresa cuyo enfoque principal es el proteguer y dar coberturas a sus Clientes a tra ves de sus diversos servicios y accesorias. De este modo poder mejor la calidad de vida de cada uno de ellos y a la ves facilitarselas.</p>
+                <a  href="#" class="btn btn-danger"  >Mas Detalle</a>
+            </div>
+        </div>           
+    </article> 
+</section>
+<div class="card-deck">
+    <div class="card"  *ngFor="let _noticia of _noticias">
+        <img [src]="_noticia.imagen" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{_noticia.titulo}}</h5>
+            <p class="card-text">{{_noticia.descripcion}}</p>
+            <p class="card-text"><small class="text-muted">{{_noticia.fecha | date:'dd/MM/yyyy'}}</small></p>
+        </div>
+    </div>
+</div>
+<app-usuario></app-usuario>
+<app-afiliado></app-afiliado>
+<app-noticia></app-noticia>
 <app-pago></app-pago>
 <app-novedades></app-novedades>
-<app-servicios></app-servicios> 
+<app-servicios></app-servicios>      
