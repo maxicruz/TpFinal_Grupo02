@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxDataTableModule } from "angular-9-datatable";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlifeFileToBase64Module } from 'alife-file-to-base64';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,9 +21,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AfiliadoComponent } from './components/afiliado/afiliado.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
-
 import { PagoComponent } from './components/pago/pago.component';
 import { NoticiaComponent } from './components/noticia/noticia.component';
+import { NovedadComponent } from './components/novedad/novedad.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { NoticiaComponent } from './components/noticia/noticia.component';
     EmailComponent,
     LoginComponent,
     PagoComponent,
-    
+    NovedadComponent,
     ServicioComponent,
     UsuarioComponent,
     NoticiaComponent,
@@ -49,12 +50,14 @@ import { NoticiaComponent } from './components/noticia/noticia.component';
     NgxDataTableModule,
     HttpClientModule,
     AppRoutingModule,
+    AlifeFileToBase64Module,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-center',
       preventDuplicates: true,
-    })
+    }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

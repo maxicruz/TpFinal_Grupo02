@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Definimos el controlador para el manejo del CRUD
-const pagoCtrl = require('./../controllers/pago.controller');
+const pagoCtrl = require('../controllers/pago.controller');
 
 // Definimos las rutas
 router.get('/', pagoCtrl.getPagos);

@@ -11,9 +11,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AfiliadoComponent } from './components/afiliado/afiliado.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
-
 import { PagoComponent } from './components/pago/pago.component';
 import { NoticiaComponent } from './components/noticia/noticia.component';
+import { NovedadComponent } from './components/novedad/novedad.component';
 
 const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -26,7 +26,7 @@ const routes: Routes = [
 	{ path: 'afiliado', component: AfiliadoComponent },
 	{ path: 'usuario', component: UsuarioComponent },
 	{ path: 'servicio', component: ServicioComponent },
-
+	{ path: 'novedad', component: NovedadComponent },
 	{ path: 'pago', component: PagoComponent },
 	{ path: 'noticia', component: NoticiaComponent },
 	{ path: '**', pathMatch:'full',redirectTo:'home' }

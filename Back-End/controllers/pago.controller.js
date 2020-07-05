@@ -2,7 +2,7 @@ const Pago = require('../models/pago');
 
 const pagoCtrl = {}
 
-// Listados de Pagos
+// Listado de Pagos
 pagoCtrl.getPagos = async(req, res) => {
   const pagos = await Pago.find().populate("afiliado");
   res.json(pagos);
@@ -14,7 +14,7 @@ pagoCtrl.getPago = async(req, res) => {
   res.json(pagos);
 }
 
-// Crear Pago
+// Alta de Pago
 pagoCtrl.createPago = async(req, res) => {
   const pago = new Pago(req.body);
   await pago.save();

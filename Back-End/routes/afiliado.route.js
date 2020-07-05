@@ -13,4 +13,4 @@ router.put('/:id', afiliadoCtrl.editAfiliado);
 router.delete('/:id', afiliadoCtrl.deleteAfiliado);
 
 // Exportamos el modulo de rutas
-module.exports = router
+module.exports = router;

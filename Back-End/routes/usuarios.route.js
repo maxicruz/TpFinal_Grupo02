@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Definimos el controlador para el manejo del CRUD
-const usuarioCtrl = require('./../controllers/usuario.controller');
+const usuarioCtrl = require('../controllers/usuario.controller');
 
 // Definimos las rutas
 router.get('/', usuarioCtrl.getUsuarios);

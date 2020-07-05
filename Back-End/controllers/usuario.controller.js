@@ -32,6 +32,7 @@ usuarioCtrl.editUsuario = async(req, res) => {
   });
 }
 
+// Baja de Usuario
 usuarioCtrl.deleteUsuario = async(req, res) => {
   await Usuario.findByIdAndRemove(req.params.id);
   res.json({
@@ -39,15 +40,18 @@ usuarioCtrl.deleteUsuario = async(req, res) => {
   });
 }
 
+// Login Usuario
 usuarioCtrl.loginUsuario = async (req, res)=>{
-
+  //en req.body se espera que vengan las credenciales de login
+  //defino los criterios de busqueda en base al username y password recibidos
   const criteria = {
       usuario: req.body.usuario,
       password: req.body.password
   } 
-
+  //el método findOne retorna un objeto que cumpla con los criterios de busqueda
   Usuario.findOne(criteria, function(err, user) {
 
+     //el método findOne retorna un objeto que cumpla con los criterios de busqueda
       if (err) {
           res.json({
               status: 0,
@@ -61,6 +65,7 @@ usuarioCtrl.loginUsuario = async (req, res)=>{
           res.json({
               status: 1,
               message: "success",
+              _id: user.id,
               usuario: user.usuario,
               activo: user.activo,
               perfil: user.perfil });
