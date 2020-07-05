@@ -7,8 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsuarioService {
-
-  URL: string = "http://localhost:3000/api/usuarios";
+  URL: string = "http://localhost:3000/api/usuarios/";
 
   constructor(private _http: HttpClient) { }
 
@@ -23,7 +22,6 @@ export class UsuarioService {
       })
     };
     var _body = JSON.stringify(_usuario);
-
     return this._http.post(this.URL, _body, _httpOptions);
   }
 
@@ -40,9 +38,9 @@ export class UsuarioService {
   public deleteUsuario(_usuario: Usuario):Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
-  
       })
     };
     return this._http.delete( this.URL + _usuario._id , httpOptions );
   }
+  
 }

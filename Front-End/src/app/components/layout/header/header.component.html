@@ -1,3 +1,9 @@
+<div class="col-md-8 col-sm-12">
+    <a *ngIf="!loginService.userLoggedIn" [routerLink]="['login']">Registrarse(Login)</a>
+    <a *ngIf="loginService.userLoggedIn" [routerLink]="['login']" (click)="logout()">
+        {{loginService.userLogged.usuario}} (logout)
+    </a>    
+</div> 
 <div class="row">               
     <!-- Logo de Pagina -->
     <div class="d-none d-md-block col-md-12 logo justify-content-center alim-items-center text-center textodiario padre" href="index.html">
@@ -8,8 +14,7 @@
     <!-- Menu de Pagina -->
     <div class="d-none d-md-block col-md-12 logo justify-content-center alim-items-center text-center textodiario borde bg-dark text-light" href="index.html">
         <b>Menu</b>
-    </div>
-   
+    </div>  
     <!-- Navigation fixed-top-->
     <nav class=" navbar navbar-expand-lg navbar-light borde  col-sm-12 col-md-12 col-lg-12" id="mainNav">
         <div class="container menuCSS3">
@@ -21,36 +26,51 @@
                 
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                  
-                  <li class="nav-item active" routerLinkActive="active">
-                      <a class="nav-link" [routerLink]="['home']"><i class="fa fa-home d-lg-none d-md-none d-md-block" aria-hidden="true"></i>&nbsp;Home  <span class="sr-only">(current)</span> </a>
-                  </li>
-                  <li class="nav-item" routerLinkActive="active">
-                      <a class="nav-link" [routerLink]="['about']"><i class="fa fa-info-circle  d-lg-none d-md-none d-md-block" aria-hidden="true"></i>&nbsp;About</a>
-                  </li>
-                  <li class="nav-item">
+                <ul class="navbar-nav ml-auto">      
+                <li class="nav-item active" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['home']"><i class="fa fa-home d-lg-none d-md-none d-md-block" aria-hidden="true"></i>&nbsp;Home  <span class="sr-only">(current)</span> </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['about']"><i class="fa fa-info-circle  d-lg-none d-md-none d-md-block" aria-hidden="true"></i>&nbsp;About</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" [routerLink]="['actividad']"><i class="fa fa-book d-lg-none d-md-none d-md-block" aria-hidden="true"></i>&nbsp;Activities</a>
-                  </li>
-                  <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" [routerLink]="['contacto']"><i class="fa fa-envelope d-lg-none d-md-none d-md-block" aria-hidden="true"></i>&nbsp;Contactos</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle btn" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog fa-spin  d-lg-none d-md-none d-md-block"></i>Company</a>
-                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                          <a class="dropdown-item btn" [routerLink]="['maps']"><i class="fa fa-map d-md-none d-md-block" aria-hidden="true"></i>&nbsp;
-                            Mapa</a>
-                          <a class="dropdown-item btn" [routerLink]="['email']"><i class="fa fa-envelope d-md-none d-md-block" aria-hidden="true"></i>&nbsp;
-                            E-mail</a>
-                          
-                      </div>
-                  </li> 
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle btn" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog fa-spin  d-lg-none d-md-none d-md-block"></i>Company</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                        <a class="dropdown-item btn" [routerLink]="['maps']"><i class="fa fa-map d-md-none d-md-block" aria-hidden="true"></i>&nbsp;
+                    Mapa</a>
+                        <a class="dropdown-item btn" [routerLink]="['email']"><i class="fa fa-envelope d-md-none d-md-block" aria-hidden="true"></i>&nbsp;
+                    E-mail</a>    
+                    </div>
+                </li>
+                
+                <li *ngIf="loginService.userLoggedIn && loginService.userLogged.perfil=='Administrador'">
+                    <a class="nav-link" [routerLink]="['usuario']"> Usuarios <span class="sr-only">(current)</span></a>
+                </li>
+                <li *ngIf="loginService.userLoggedIn && (loginService.userLogged.perfil=='Socio' || loginService.userLogged.perfil=='Administrador')">
+                    <a class="nav-link" [routerLink]="['']"> Novedades <span class="sr-only">(current)</span></a>
+                </li> 
+                <li *ngIf="loginService.userLoggedIn && (loginService.userLogged.perfil=='Administrativo' || loginService.userLogged.perfil=='Administrador')">
+                    <a class="nav-link" [routerLink]="['afiliado']"> Afiliados <span class="sr-only">(current)</span></a>
+                </li>
+                <li *ngIf="loginService.userLoggedIn && (loginService.userLogged.perfil=='Administrativo' || loginService.userLogged.perfil=='Administrador')">
+                    <a class="nav-link" [routerLink]="['servicio']"> Servicios <span class="sr-only">(current)</span></a>
+                </li>
+                <li *ngIf="loginService.userLoggedIn && (loginService.userLogged.perfil=='Administrativo' || loginService.userLogged.perfil=='Administrador')">
+                    <a class="nav-link" [routerLink]="['pago']"> Pagos <span class="sr-only">(current)</span></a>
+                </li>
+                <li *ngIf="loginService.userLoggedIn && (loginService.userLogged.perfil=='Administrativo' || loginService.userLogged.perfil=='Administrador')">
+                    <a class="nav-link" [routerLink]="['noticia']"> Noticias <span class="sr-only">(current)</span></a>
+                </li>
                 </ul>
             </div>
         </div>
-        <app-login></app-login>        
+        
     </nav>
     <!-- FIN Menu de Pagina -->    			
-</div>	
-<!-- Nuevo Menu de Pagina -->	
-   
+</div>	 

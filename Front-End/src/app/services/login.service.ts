@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
   userLoggedIn: boolean = false;
   userLogged: Usuario;
 
@@ -30,12 +29,13 @@ export class LoginService {
     this.userLoggedIn = false;  
   }  
 
-
   public getUsuarios():Observable<any>{
+
     const httpOption = {
       headers: new HttpHeaders({
       }) 
     }
     return this._http.get("http://localhost:3000/api/usuarios/", httpOption);
   }
+
 }

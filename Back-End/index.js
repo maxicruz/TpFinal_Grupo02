@@ -9,11 +9,12 @@ app.use(express.json());
 app.use(cors({origin: 'http://localhost:4200'}));
 
 //Cargamos el modulo de direccionamiento de rutas para puntos
-app.use('/api/usuarios', require('./routes/usuarios.route'));
 app.use('/api/afiliados', require('./routes/afiliados.route'));
 app.use('/api/noticias', require('./routes/noticias.route'));
 app.use('/api/novedades', require('./routes/novedades.route'));
 app.use('/api/pagos', require('./routes/pagos.route'));
+app.use('/api/servicios', require('./routes/servicios.route'));
+app.use('/api/usuarios', require('./routes/usuarios.route'));
 
 //setting
 app.set('port', process.env.PORT || 3000);

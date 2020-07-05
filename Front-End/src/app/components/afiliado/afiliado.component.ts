@@ -149,7 +149,7 @@ export class AfiliadoComponent implements OnInit {
         if (this._servicios[j].afiliadosInsc[k]._id == afiliado._id) {
           _existeServicio = true;
         }
-      }
+      } 
     }
     if (_existePago || _existeServicio) {
       this._toastr.error("NO se puede eliminar el afiliado");

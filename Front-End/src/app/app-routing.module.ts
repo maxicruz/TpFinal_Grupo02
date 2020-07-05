@@ -7,8 +7,12 @@ import { ActivitiesComponent } from './components/activities/activities.componen
 import { MapsComponent } from './components/maps/maps.component';
 import { CotactosComponent } from './components/cotactos/cotactos.component';
 import { EmailComponent } from './components/email/email.component';
+import { LoginComponent } from './components/login/login.component';
+import { AfiliadoComponent } from './components/afiliado/afiliado.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+
 import { PagoComponent } from './components/pago/pago.component';
-import { NovedadesComponent } from './components/novedades/novedades.component';
 import { NoticiaComponent } from './components/noticia/noticia.component';
 
 const routes: Routes = [
@@ -18,8 +22,12 @@ const routes: Routes = [
 	{ path: 'maps', component: MapsComponent },
 	{ path: 'contacto', component: CotactosComponent },
 	{ path: 'email', component: EmailComponent },
+	{ path: 'login', component: LoginComponent },
+	{ path: 'afiliado', component: AfiliadoComponent },
+	{ path: 'usuario', component: UsuarioComponent },
+	{ path: 'servicio', component: ServicioComponent },
+
 	{ path: 'pago', component: PagoComponent },
-	{ path: 'novedades', component: NovedadesComponent },
 	{ path: 'noticia', component: NoticiaComponent },
 	{ path: '**', pathMatch:'full',redirectTo:'home' }
 ];

@@ -1,0 +1,26 @@
+[
+ { 
+  "apellido":"Alavar",
+  "nombres":"Brian",
+  "dni":36271982,
+  "email":"alavar@gmail.com",
+  "imagen":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSovoKFqxLuzAvFqPL-Ge0cqW4QWAf8ZolXKQ&usqp=CAU",
+  "telefono":3882981982,
+ },
+ { 
+  "apellido":"Vilca",
+  "nombres":"Maria",
+  "dni":42654324,
+  "email":"maria@gmail.com",
+  "imagen":"https://es.web.img2.acsta.net/pictures/20/01/07/02/04/3952839.jpg",
+  "telefono":3889871991,
+ },
+ { 
+  "apellido":"Vaca",
+  "nombres":"Jessica",
+  "dni":36271982,
+  "email":"jessica@gmail.com",
+  "imagen":"https://fashion.hola.com/imagenes/belleza/2019042567254/polvos-bronceadores-trucos-maquillaje-jessica-alba/0-283-351/jessica-alba-bronceador-usos-z.jpg",
+  "telefono":3882988767,
+ }
+]

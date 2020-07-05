@@ -1,0 +1,26 @@
+[
+{
+   "usuario": "admin@gmail.com",
+   "password": "admin",
+   "activo": true,
+   "perfil": "Administrador",
+ },
+ {
+   "usuario": "seba@gmail.com",
+   "password": "seba123",
+   "activo": true,
+   "perfil": "Administrativo",
+ },
+ { 
+   "usuario": "maxi@gmail.com",
+   "password": "maxi123",
+   "activo": true,
+   "perfil": "Administrativo",
+ },
+ { 
+   "usuario": "brian@gmail.com",
+   "password": "brian123",
+   "activo": true,
+   "perfil": "Socio",
+ }
+]

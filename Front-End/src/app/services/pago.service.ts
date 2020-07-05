@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PagoService {
-  URL: string = "http://localhost:3000/api/pagos"
+  URL: string = "http://localhost:3000/api/pagos/"
 
   constructor(private _http: HttpClient) { }
 

@@ -1,35 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Afiliado } from '../models/afiliado';
+import { Servicio } from '../models/servicio';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AfiliadoService {
-  URL: string = "http://localhost:3000/api/afiliados/";
+export class ServicioService {
+  URL: string = "http://localhost:3000/api/servicios/";
 
   constructor(private _http: HttpClient) { }
 
-  public getAfiliados(): Observable<any> {
+  public getServicios(): Observable<any> {
     return this._http.get(this.URL);
   }
 
-  public addAfiliado(_afiliado: Afiliado): Observable<any> {
+  public addServicio(_servicio: Servicio): Observable<any> {
     const _httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
     };
-    var _body = JSON.stringify(_afiliado);
+    var _body = JSON.stringify(_servicio);
     return this._http.post(this.URL, _body, _httpOptions);
   }
 
-  public updateAfiliado(_afiliado: Afiliado) {
-    return this._http.put(this.URL + "/" + _afiliado._id, _afiliado);
+  public updateServicio(_servicio: Servicio) {
+    return this._http.put(this.URL + "/" + _servicio._id, _servicio);
   }
 
-  public deleteAfiliado(_id: any) {
+  public deleteServicio(_id: any) {
     return this._http.delete(this.URL + "/" + _id);
   }
 }

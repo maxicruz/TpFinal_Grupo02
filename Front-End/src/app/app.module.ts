@@ -16,14 +16,13 @@ import { ActivitiesComponent } from './components/activities/activities.componen
 import { MapsComponent } from './components/maps/maps.component';
 import { CotactosComponent } from './components/cotactos/cotactos.component';
 import { EmailComponent } from './components/email/email.component';
-import { NoticiasComponent } from './components/noticias/noticias.component';
 import { LoginComponent } from './components/login/login.component';
-import { PagoComponent } from './components/pago/pago.component';
-import { ServiciosComponent } from './components/servicios/servicios.component';
-import { UsuarioComponent } from './components/usuario/usuario.component';
-import { NovedadesComponent } from './components/novedades/novedades.component';
-import { NoticiaComponent } from './components/noticia/noticia.component';
 import { AfiliadoComponent } from './components/afiliado/afiliado.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+
+import { PagoComponent } from './components/pago/pago.component';
+import { NoticiaComponent } from './components/noticia/noticia.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +35,10 @@ import { AfiliadoComponent } from './components/afiliado/afiliado.component';
     MapsComponent,
     CotactosComponent,
     EmailComponent,
-    NoticiasComponent,
     LoginComponent,
     PagoComponent,
-    NovedadesComponent,
-    ServiciosComponent,
+    
+    ServicioComponent,
     UsuarioComponent,
     NoticiaComponent,
     AfiliadoComponent,

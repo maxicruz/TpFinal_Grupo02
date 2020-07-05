@@ -1,68 +1,65 @@
 <div class="container mt-3">
-    <form class="card" #usuarioForm="ngForm">
-        <div class="card-header text-center h3">GESTION DE USUARIOS</div>
-        <div class="card-body">
-    
-        <!-- Usuario -->
-        <div class="form-group row">
-            <label for="idusuario" class="col-md-4">Usuario</label>
-            <input id="idusuario" class="form-control form-control-sm col-md-8" required pattern= "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                type="text" name="usuario" #txtUsuario="ngModel" placeholder="email@dominio.com"
+  <form class="card" #usuarioForm="ngForm">
+    <article id="cabecera">
+      <br><br>
+      <h2 class="text-center">Gesti&oacute;n de Usuarios</h2>
+      <br>
+      <p class="text-center">Complete el Formulario para el usuario</p>
+      <br>               
+    </article>
+    <div class="card-body">
+      <!-- Usuario -->
+      <div class="form-group row">
+        <label for="idusuario" class="col-sm-12 col-md-4 h4">Usuario: </label>
+        <input id="idusuario" class="form-control form-control-sm col-md-7" required pattern= "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                type="text" name="usuario" #txtUsuario="ngModel" placeholder="email@gmail.com"
                 [(ngModel)]="_usuario.usuario"/>
-            <div *ngIf="txtUsuario.invalid && (txtUsuario.dirty || txtUsuario.touched)" class="alert alert-danger">
-              <div *ngIf="txtUsuario.errors.required">
-                El campo Usuario es requerido
-              </div>
-              <div *ngIf="txtUsuario.errors.pattern">
-                El Usuario debe ser un email
-              </div>
-            </div>								  		
-        </div>
-  
-        <!-- Password -->
+        <div *ngIf="txtUsuario.invalid && (txtUsuario.dirty || txtUsuario.touched)" class="alert alert-danger">
+          <div *ngIf="txtUsuario.errors.required">
+            El Usuario es requerido
+          </div>
+          <div *ngIf="txtUsuario.errors.pattern">
+            El Usuario debe ser un email
+          </div>
+        </div>								  		
+      </div>
+      <!-- Password -->
         <div class="form-group row">
-            <label for="idpassword" class="col-md-4">Password</label>
-            <input id="idpassword" class="form-control form-control-sm col-md-8" required
-                 type="password" name="password" #txtPassword="ngModel"
-                  [(ngModel)]="_usuario.password"/>
+            <label for="idpassword" class="col-sm-12 col-md-4 h4">Password: </label>
+            <input id="idpassword" class="form-control form-control-sm col-md-7" required type="password" name="password" #txtPassword="ngModel" [(ngModel)]="_usuario.password"/>
             <div *ngIf="txtPassword.invalid && (txtPassword.dirty || txtPassword.touched)" class="alert alert-danger">
               <div *ngIf="txtPassword.errors.required">
-              El campo Password es requerido
+              El Password es requerido
               </div>
             </div>
         </div>
-  
         <!-- Perfil -->
         <div class="form-group row">
-          <label for="idperfil" class="col-md-4">Perfil</label>
-          <select id="idperfil" class="form-control form-control-sm col-md-8" required
-               name="perfil" #txtPerfil="ngModel" [(ngModel)]="_usuario.perfil">
-             <option >Administrador</option>
-             <option >Administrativo</option>
-             <option >Socio</option>
+          <label for="idperfil" class="col-sm-12 col-md-4 h4">Perfil: </label>
+          <select id="idperfil" class="form-control form-control-sm col-md-7" required name="perfil" #txtPerfil="ngModel" [(ngModel)]="_usuario.perfil">
+            <option >Administrador</option>
+            <option >Administrativo</option>
+            <option >Socio</option>
           </select>
           <div *ngIf="txtPerfil.invalid && (txtPerfil.dirty || txtPerfil.touched)" class="alert alert-danger">
             <div *ngIf="txtPerfil.errors.required">
-            El campo Perfil es requerido
+            El Perfil es requerido
             </div>
           </div>
         </div>  
-      
         <!-- Activo -->
         <div class="form-group row">
-            <label for="idactivo" class="col-md-4">Activo</label>
-            <input id="idactivo" class="form-control form-control-sm col-md-8"
-                 type="checkbox" name="activo" 
-                   [(ngModel)]="_usuario.activo"/> 
+            <label for="idactivo" class="col-sm-12 col-md-4 h4">Activo: </label>
+            <input id="idactivo" class="form-control form-control-sm col-md-7" type="checkbox" name="activo" [(ngModel)]="_usuario.activo"/> 
         </div>
         <!-- Botones -->
         <div class="form-group text-center">
-            <button class="btn btn-success ml-2 mr-2" [disabled]="!usuarioForm.form.valid || editMode" (click)="agregarUsuario()"><i class="fas fa-save fal"></i> Guardar</button>
-            <button class="btn btn-secondary ml-2 mr-2" [disabled]="!editMode" (click)="modificarUsuario()" ><i class="fas fa-save fal"></i> Modificar</button>            
-            <button class="btn btn-secondary ml-2 mr-2" (click)="limpiarCampos()" ><i class="fas fa-brush"></i> Limpiar</button>
+            <button class="btn btn-primary mr-1" [disabled]="!usuarioForm.form.valid || editMode" (click)="agregarUsuario()"> Guardar</button>
+            <button class="btn btn-primary mr-1" [disabled]="!editMode" (click)="modificarUsuario()" > Modificar</button>            
+            <button class="btn btn-primary mr-1" (click)="limpiarCampos()" > Limpiar</button>
         </div>
     </div>
-    </form>
+  </form>
     
     <h2 class="text-center mt-3">Informaci&oacute;n de Usuarios</h2>
     <!-- Tabla -->
@@ -89,4 +86,4 @@
           </tr>
         </tbody>
       </table>
-  </div>
+</div>

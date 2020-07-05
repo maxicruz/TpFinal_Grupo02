@@ -2,19 +2,19 @@ const Novedad = require('../models/novedad');
 
 const novedadCtrl = {}
 
-// Listados de Novedades
+// Listado de Novedades
 novedadCtrl.getNovedades = async(req, res) => {
   const novedades = await Novedad.find().populate("usuario");
   res.json(novedades);
 }
 
 // Obtener Novedad por ID
-novedadCtrl.getNovedade = async(req, res) => {
-  const novedades = await Novedad.findById(req.params.id);
-  res.json(novedades);
+novedadCtrl.getNovedad = async(req, res) => {
+  const novedad = await Novedad.findById(req.params.id).populate("usuario");
+  res.json(novedad);
 }
 
-// Crear Novedad
+// Alta de Novedad
 novedadCtrl.createNovedad = async(req, res) => {
   const novedad = new Novedad(req.body);
   await novedad.save();
