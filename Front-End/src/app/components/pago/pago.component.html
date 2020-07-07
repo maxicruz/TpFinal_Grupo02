@@ -64,15 +64,15 @@
       </div>
       <!-- Botones -->
       <div class="form-group text-center">
-        <button type="button" class="btn btn-primary mr-1" [disabled]="!pagoForm.form.valid" (click)="agregarPago()">Guardar</button>
-        <button type="reset" class="btn btn-primary mr-1" >Limpiar</button> 
+        <button type="button" class="btn btn-primary mr-1" [disabled]="!pagoForm.form.valid" (click)="agregarPago()"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Guardar</button>
+        <button type="reset" class="btn btn-primary mr-1" ><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Limpiar</button> 
       </div>
     </div>
   </form>
 
   <h2 class="text-center mt-3">Informaci&oacute;n de Pagos</h2>
   <div class="table-responsive">
-    <table class="table">
+    <table class="table" [mfData]="_pagos" #mf="mfDataTable" [mfRowsOnPage]="3">
       <thead>
         <tr>
           <th>Afiliado</th>
@@ -83,14 +83,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pago of _pagos">
+        <tr *ngFor="let pago of mf.data">
           <td>{{ pago.afiliado.apellido | uppercase}}, {{ pago.afiliado.nombres }} - {{ pago.afiliado.dni }}</td>
           <td>{{ pago.fecha | date:"dd-MM-yyyy" }}</td>
           <td>{{ pago.monto | currency}}</td>
           <td>{{ pago.mes }}</td>
           <td>{{ pago.anio }}</td>
+		  <!--  <td> 
+              <button class="btn btn-primary"  ><i class="fa fa-pencil" aria-hidden="true"></i>Seleccionar</button>          
+              <button class="btn btn-danger"  ><i class="fa fa-trash-o" aria-hidden="true"></i>Borrar</button>
+          </td>-->
         </tr>
       </tbody>
+        <tr>
+          <td colspan="3">
+            <mfBootstrapPaginator [rowsOnPageSet]="[3,10,25]"></mfBootstrapPaginator>
+          </td>
+        </tr>
     </table>
   </div>
 </div>

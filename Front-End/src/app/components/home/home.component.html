@@ -36,13 +36,36 @@
         </div>           
     </article> 
 </section>
-<div class="card-deck">
-    <div class="card"  *ngFor="let _noticia of _noticias">
-        <img [src]="_noticia.imagen" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{_noticia.titulo}}</h5>
-            <p class="card-text">{{_noticia.descripcion}}</p>
-            <p class="card-text"><small class="text-muted">{{_noticia.fecha | date:'dd/MM/yyyy'}}</small></p>
+
+<section>
+	<div class="row"  >		
+	    <div class="col-lg-4 col-md-4 col-sm-12 p-1 " *ngFor="let _noticia of _noticias" >
+            <div class="card h-100 "  >
+				<!-- Imagen de Noticia -->
+				<img class="card-img-top img-fluid " [src]="_noticia.imagen" alt=""/>
+				<div class="card-body">
+				<!-- Titulo de Noticias -->
+                    <h4 class="card-title">{{_noticia.titulo}}</h4>
+					<!-- Resumen de Noticias -->
+					<p class="card-text">{{_noticia.descripcion}}</p>
+						<p class="card-text"><small class="text-muted">{{_noticia.fecha | date:'dd/MM/yyyy'}}</small></p>
+						<p>
+						<a type="button" class="btn-floating btn-fb btn-sm face" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgithub.com%2Fmaxicruz%2FTpFinal_Grupo02&amp;src=sdkpreparse">
+							<i class="fa fa-facebook-square" aria-hidden="true"></i>&nbsp;Compartir
+						</a>
+						</p>
+						<p>
+						<a type="button" class="btn-floating btn-fb btn-sm google" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4200%2Fhome&amp;src=sdkpreparse">
+							<i class="fa fa-google-plus" aria-hidden="true"></i>&nbsp;Compartir
+					    </a>
+					    </p>
+						<p>
+					    <a type="button" class="btn-floating btn-sm twitter">
+							<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Compartir
+					    </a>
+					</p>							   
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+	</div>
+</section>

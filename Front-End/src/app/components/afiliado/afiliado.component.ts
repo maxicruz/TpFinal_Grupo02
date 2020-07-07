@@ -16,7 +16,7 @@ import * as printJS from 'print-js';
   styleUrls: ['./afiliado.component.css']
 })
 export class AfiliadoComponent implements OnInit {
-
+	buscado:string;
   _afiliado: Afiliado;
   _afiliadoAuxiliar: Afiliado;
   _afiliados: Array<Afiliado>;
@@ -42,6 +42,8 @@ export class AfiliadoComponent implements OnInit {
     this.obtenerServicios();
   }
 
+
+  
   /* Obtiene una lista de afiliados */
   public obtenerAfiliados() {
     this._afiliadoService.getAfiliados().subscribe(

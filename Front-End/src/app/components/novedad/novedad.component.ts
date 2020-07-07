@@ -18,15 +18,13 @@ export class NovedadComponent implements OnInit {
   primeringreso: boolean = true;
 
   constructor( private _novedadService: NovedadService, private toastr:ToastrService, private router:Router, public loginService: LoginService) {
-    //validacion por ruta
     if (!loginService.userLoggedIn) {
       this.router.navigateByUrl('/login');
     }
-
     this._novedad = new Novedad();
     this._novedades = new Array<Novedad>();
     this.obtenerNovedades();
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -48,24 +46,18 @@ export class NovedadComponent implements OnInit {
 
   public agregarNovedad() {
     this._novedad.estado = false;
-    //if(this.primeringreso==true){
-      this._novedad.usuario = new Usuario();
-      this._novedad.usuario._id= this.loginService.userLogged._id; //captura el perfil del usuario logueado
-      //this.primeringreso = false;
-    //}
-    //if(this.primeringreso==false){
-      this._novedadService.addNovedad(this._novedad).subscribe(
-        (result) => {
-          this.obtenerNovedades();
-          this.toastr.success('Novedad Agregada Exitosamente');
-          this.limpiarCampos();
-        },
-        (error) => {
-          console.log(error);
-          }
-        )    
-    //}
-     
+    this._novedad.usuario = new Usuario();
+    this._novedad.usuario._id= this.loginService.userLogged._id;
+    this._novedadService.addNovedad(this._novedad).subscribe(
+      (result) => {
+        this.obtenerNovedades();
+        this.toastr.success('Novedad Agregada Exitosamente');
+        this.limpiarCampos();
+      },
+      (error) => {
+        console.log(error);
+      }
+    )        
   }
 
   public limpiarCampos() {
@@ -92,7 +84,7 @@ export class NovedadComponent implements OnInit {
 
 
   public modificarNovedad(novedad:Novedad){
-   this._novedadService.updateNovedad(novedad).subscribe(
+    this._novedadService.updateNovedad(novedad).subscribe(
       (result)=>{
         this.obtenerNovedades();
         this.toastr.success('Estado Actualizado Exitosamente');
@@ -104,6 +96,13 @@ export class NovedadComponent implements OnInit {
     this.limpiarCampos();
   }
 
-  
+  mostrarEstado(estado:Boolean){
+    if(estado==true){
+      return "Procesado"
+    }
+    else{
+      return "Pendiente"
+    }
+  }
 
 }

@@ -1,24 +1,32 @@
 <div class="text-center mt-3">
     <div class="card col-md-6 offset-md-3">
-      <div class="card-header ">
-        <img src="#" class="login">
-      </div>
-      <br>
-      <form name="form">
-        <div class="form-group" id="user-group">
-          <label for="usuario"><i class="fas fa-user"></i>&nbsp;Usuario</label>
-          <input type="text" class="form-control" name="usuario" [(ngModel)]="userform.usuario" />
-        </div>
-        <div class="form-group">
-          <label for="password"><i class="fas fa-lock"></i>&nbsp;Password</label>
-          <input type="password" class="form-control " name="password" [(ngModel)]="userform.password" />
-        </div>
-        <br>
-        <div class="form-group">
-          <button class="btn btn-dark col-5" (click)="login()">Ingresar<i class="fas fa-sign-in-alt col-3"></i></button>
-        </div>
-        <div class="alert-danger">{{_msglogin}}</div>
-      </form>
+    <div class="card-header text-center">
+		<i class="fa fa-users fa-4x" aria-hidden="true"></i>
     </div>
-  </div>
-  <br>  
+    <br>
+	<div class="card-body">
+		<form name="form">
+			<div class="form-group" id="user-group">
+				<div class="wrap-input100 validate-input row" data-validate = "Enter username">
+					<i class="fa fa-user fa-3x col-md-2" aria-hidden="true"></i>
+					<input class="input100 col-md-9" type="text" id="userid" name="usuario" [(ngModel)]="userform.usuario" placeholder="Usuario" >
+					<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+				</div>	  
+			</div>
+			<div class="form-group">
+				<div class="wrap-input100 validate-input row" data-validate="Enter password">
+					<i class="fa fa-key fa-3x col-md-2" aria-hidden="true"></i>
+					<input class="input100 col-md-9" type="password" id="password" name="password" [(ngModel)]="userform.password" placeholder="Constrase�a" >
+					<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+				</div>
+			</div>
+			<br>                   
+			<div class="form-group">
+				<button class="btn btn-dark col-5" (click)="login()"><i class="fa fa-unlock-alt fa-lg" aria-hidden="true"></i>&nbsp;Ingresar</button>
+			</div>
+			<div class="alert-danger">{{_msglogin}}</div>
+		</form>
+	</div>	
+	</div>
+</div>
+<br>  

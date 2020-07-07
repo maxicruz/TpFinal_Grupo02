@@ -104,11 +104,21 @@
 
       <!-- Botones -->
       <div class="form-group text-center">
-        <button type="button" class="btn btn-success" [disabled]="!afiliadoForm.form.valid" (click)="agregarAfiliado()"><i class="fas fa-save fal"></i>&nbsp;Agregar Afiliado</button>
+        <button type="button" class="btn btn-success" [disabled]="!afiliadoForm.form.valid" (click)="agregarAfiliado()"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Agregar Afiliado</button>
       </div>
     </div>
   </form>
-
+  <hr>
+  <div class="input-group mb-3">
+	  <div class="input-group-prepend">
+		<span class="input-group-text" id="basic-addon3"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;BUSCAR por DNI</span>
+	  </div>
+	  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="buscado" [(ngModel)]="buscado">
+	</div>
+  <div class="text-center">
+      <button class="btn btn-primary" (click)="imprimirAfiliados()"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Imprimir Afiliados</button>
+    </div>
+	<hr>
   <h2 class="text-center mt-3">Informaci&oacute;n de Afiliados</h2>
   <div class="table-responsive">
     <table class="table">
@@ -124,7 +134,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let _afiliado of _afiliados">
+        <tr *ngFor="let _afiliado of _afiliados  |filter: 'apellido':buscado">
           <td>{{ _afiliado.apellido }}</td>
           <td>{{ _afiliado.nombres }}</td>
           <td>{{ _afiliado.dni }}</td>
@@ -133,14 +143,14 @@
           <td>{{ _afiliado.telefono }}</td>
           <td>
             <!-- Modificar -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" (click)="auxiliarAfiliado(_afiliado)">Modificar</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" (click)="auxiliarAfiliado(_afiliado)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar</button>
             <!-- Modificar Modal -->
             <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog"
               aria-labelledby="modificarModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="modificarModalLabel">Modificar Afiliado</h5>
+                    <h5 class="modal-title" id="modificarModalLabel">&nbsp;Modificar Afiliado</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -244,8 +254,10 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="modificarAfiliado(_afiliadoAuxiliar)" [disabled]="!afiliadoModificarForm.form.valid">Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="modificarAfiliado(_afiliadoAuxiliar)" [disabled]="!afiliadoModificarForm.form.valid"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                      &nbsp;Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>
+                      &nbsp;Cancelar</button>
                   </div>
                   </form>
                 </div>
@@ -253,7 +265,7 @@
             </div>
 
             <!-- Eliminar -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal" (click)="auxiliarAfiliado(_afiliado)">Eliminar</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal" (click)="auxiliarAfiliado(_afiliado)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Eliminar</button>
             <!-- Eliminar Modal -->
             <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="eliminarModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -268,8 +280,10 @@
                     <h6>{{ _afiliadoAuxiliar.apellido }}, {{ _afiliadoAuxiliar.nombres }}</h6>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="eliminarAfiliado(_afiliadoAuxiliar)" >Si</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="eliminarAfiliado(_afiliadoAuxiliar)" ><i class="fa fa-check" aria-hidden="true"></i>
+                      &nbsp;Si</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>
+                      &nbsp;No</button>
                   </div>
                 </div>
               </div>
@@ -278,8 +292,5 @@
         </tr>
       </tbody>
     </table>
-    <div class="text-center">
-      <button class="btn btn-primary" (click)="imprimirAfiliados()">Imprimir Afiliados</button>
-    </div>
   </div>
 </div>

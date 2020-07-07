@@ -16,7 +16,6 @@ export class UsuarioComponent implements OnInit {
   editMode:boolean=false;
 
   constructor(private _usuarioService: UsuarioService, private toastr:ToastrService, private router:Router, private loginService: LoginService) { 
-    //validacio por ruta
     if (!loginService.userLoggedIn) {
       this.router.navigateByUrl('/login');
     }
@@ -29,7 +28,6 @@ export class UsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /* Obtiene una lista de usuarios */
   public obtenerUsuarios() {
     this._usuarioService.getUsuarios().subscribe(
       (result) => {
@@ -43,7 +41,6 @@ export class UsuarioComponent implements OnInit {
     )
   }
 
-  /* Agrega un usuario */
   public agregarUsuario() {
     var _existeUsuario: boolean = false;
     for (var i in this._usuarios) {
@@ -52,7 +49,7 @@ export class UsuarioComponent implements OnInit {
       }
     }
     if (_existeUsuario) {
-      this.toastr.error("Usuario repetido");
+      this.toastr.error("Usuario repetido");	  
     } else{
       this._usuarioService.addUsuario(this._usuario).subscribe(
         (result) => {
@@ -80,7 +77,6 @@ export class UsuarioComponent implements OnInit {
     this._usuario = tusuario;
   }
 
-  /* Elimina un usuario */
   public eliminarUsuario(usuario: Usuario) {
     this._usuarioService.deleteUsuario(usuario).subscribe(
       (result) => {
@@ -93,9 +89,8 @@ export class UsuarioComponent implements OnInit {
     );
   }
 
-  /* Modifica un usuario */
   public modificarUsuario(){
-   this._usuarioService.updateUsuario(this._usuario).subscribe(
+    this._usuarioService.updateUsuario(this._usuario).subscribe(
       (result)=>{
         this.obtenerUsuarios();
         this.toastr.success('Usuario Modificado Correctamente');

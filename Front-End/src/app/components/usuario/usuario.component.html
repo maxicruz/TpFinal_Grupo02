@@ -54,9 +54,10 @@
         </div>
         <!-- Botones -->
         <div class="form-group text-center">
-            <button class="btn btn-primary mr-1" [disabled]="!usuarioForm.form.valid || editMode" (click)="agregarUsuario()"> Guardar</button>
-            <button class="btn btn-primary mr-1" [disabled]="!editMode" (click)="modificarUsuario()" > Modificar</button>            
-            <button class="btn btn-primary mr-1" (click)="limpiarCampos()" > Limpiar</button>
+            <button class="btn btn-primary mr-1" [disabled]="!usuarioForm.form.valid || editMode" (click)="agregarUsuario()"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+ Guardar</button>
+            <button class="btn btn-primary mr-1" [disabled]="!editMode" (click)="modificarUsuario()" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar</button>            
+            <button class="btn btn-primary mr-1" (click)="limpiarCampos()" ><i class="fa fa-trash" aria-hidden="true"></i> Limpiar</button>
         </div>
     </div>
   </form>
@@ -80,8 +81,10 @@
             <td><input type="checkbox" [checked]="_usuario.activo"/> </td>
             <td>{{ _usuario.perfil }}</td>
             <td> 
-              <button class="btn btn-primary" (click)="seleccionarUsuario(_usuario)" >Seleccionar</button>          
-              <button class="btn btn-danger" (click)="eliminarUsuario(_usuario)" >Borrar</button>
+              <button class="btn btn-primary" (click)="seleccionarUsuario(_usuario)" ><i class="fa fa-pencil" aria-hidden="true"></i>
+Seleccionar</button>          
+              <button class="btn btn-danger" (click)="eliminarUsuario(_usuario)" ><i class="fa fa-trash-o" aria-hidden="true"></i>
+Borrar</button>
             </td>
           </tr>
         </tbody>

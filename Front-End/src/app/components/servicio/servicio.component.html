@@ -4,7 +4,7 @@
       <br><br>
       <h2 class="text-center">Gesti&oacute;n de Servicios</h2>
       <br>
-      <p class="text-center">Complete el Formulario para el servicios</p>
+      <p class="text-center">Complete el Formulario para el servicio</p>
       <br>               
     </article>
     <br>
@@ -39,7 +39,7 @@
       </div>          
       <div *ngIf="txtImagen.invalid && (txtImagen.dirty || txtImagen.touched)" class="alert alert-danger">
         <div *ngIf="txtImagen.errors.required">
-          El Imagen es requerido
+          El Campo Imagen es requerido
         </div>
       </div>
     </div>
@@ -51,9 +51,9 @@
     </div>
     <!-- Botones -->
     <div class="form-group text-center">
-      <button class="btn btn-primary mr-1" [disabled]="!servicioForm.form.valid" (click)="agregarServicio()"> Guardar</button>
-      <button class="btn btn-primary mr-1" (click)="modificarServicio(_servicio)"> Modificar</button>            
-      <button class="btn btn-primary mr-1" (click)="limpiarCampos()">Limpiar</button>  
+      <button class="btn btn-primary mr-1" [disabled]="!servicioForm.form.valid" (click)="agregarServicio()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+      <button class="btn btn-primary mr-1" (click)="modificarServicio(_servicio)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar</button>            
+      <button class="btn btn-primary mr-1" (click)="limpiarCampos()"><i class="fa fa-trash" aria-hidden="true"></i>Limpiar</button>  
     </div>
       <article id="cabecera">
         <br>
@@ -77,8 +77,8 @@
                 <td><img src="{{ _servicio.imagen }}" alt="" width="50px" height="50px"></td>
                 <td>{{ _servicio.activo }}</td>
                 <td> 
-                  <button class="btn btn-primary" (click)="seleccionarServicio(_servicio)" >Seleccionar</button>          
-                  <button class="btn btn-danger" (click)="eliminarServicio(_servicio)" >Borrar</button>
+                  <button class="btn btn-primary" (click)="seleccionarServicio(_servicio)" ><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Seleccionar</button>          
+                  <button class="btn btn-danger" (click)="eliminarServicio(_servicio)" ><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Borrar</button>
                 </td>
               </tr>
             </tbody>
@@ -101,7 +101,7 @@
           <br>
         </div>
         <div class="col text-center" >
-          <button  class="btn btn-secondary ml-2 mr-2 col-md-4" (click)="agregarAfiliado(afiliadoaux)" ><i class="fas fa-brush"></i> Agregar</button>
+          <button  class="btn btn-secondary ml-2 mr-2 col-md-4" (click)="agregarAfiliado(afiliadoaux)" ><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Agregar</button>
         </div>   
       <br><br>
         <!-- Afiliados del servicio -->
@@ -127,7 +127,7 @@
                 <td>{{af.nombres}}</td>
                 <td>{{af.apellido}}</td>
                 <td>           
-                  <button class="btn btn-danger" (click)="borrarAfiliado(af)" >Borrar</button>
+                  <button class="btn btn-danger" (click)="borrarAfiliado(af)" ><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Borrar</button>
                 </td>
               </tr>
             </tbody>

@@ -24,6 +24,7 @@ import { ServicioComponent } from './components/servicio/servicio.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { NoticiaComponent } from './components/noticia/noticia.component';
 import { NovedadComponent } from './components/novedad/novedad.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { NovedadComponent } from './components/novedad/novedad.component';
     UsuarioComponent,
     NoticiaComponent,
     AfiliadoComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

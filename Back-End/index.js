@@ -18,7 +18,6 @@ app.use('/api/pagos', require('./routes/pagos.route'));
 app.use('/api/noticias', require('./routes/noticias.route'));
 app.use('/api/novedades', require('./routes/novedad.route'));
 
-
 // Setting
 app.set('port', process.env.PORT || 3000);
 
