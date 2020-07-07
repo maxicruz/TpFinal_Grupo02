@@ -1,5 +1,60 @@
-<div class="container mt-3">  
-  <form class="card" #servicioForm="ngForm">
+<div class="container mt-3">
+  <article id="cabecera">
+    <br>
+    <h2 class="text-center">Servicios</h2>
+    <br>              
+  </article>
+  <br>
+  <div  class="table-responsive">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Imagen</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let _servicio of _servicios" >
+          <th>{{ _servicio.nombre }}</th>
+          <td><img src="{{ _servicio.imagen }}" alt="" width="50px" height="50px"></td>
+          <td>{{ mostrarEstado(_servicio.activo)}}</td>
+          <td> 
+            <button class="btn btn-primary" (click)="seleccionarServicio(_servicio)" ><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Seleccionar</button>  
+            <!-- Eliminar -->        
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal" (click)="auxiliarServicio(_servicio)" ><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Borrar</button>
+            <!-- Eliminar Modal -->
+            <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="eliminarModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="eliminarModalLabel">¿Desea eliminar este servicio?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h6>{{ _servicioAuxiliar.nombre }}</h6>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="eliminarServicio(_servicioAuxiliar)">Si</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>      
+    </table>
+    <div class="text-center">
+      <button class="btn btn-primary" (click)="imprimirServicios()">Imprimir Servicios</button>
+    </div>
+  </div>
+  <br><br>
+
+  <form class="card" #servicioForm="ngForm" class="was-validated">
     <article id="cabecera">
       <br><br>
       <h2 class="text-center">Gesti&oacute;n de Servicios</h2>
@@ -8,131 +63,115 @@
       <br>               
     </article>
     <br>
-    <div class="card-body">
-    <!-- Nombre -->
-    <div class="row form-group">
-      <label class="col-sm-12 col-md-4 h4">Nombre: </label>
-      <input class="form-control col-sm-12 col-md-7" type="text" id="nombre" name="txtNombre" required
-            minlength="3" pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" #txtNombre="ngModel" [(ngModel)]="_servicio.nombre" />
-      <div *ngIf="txtNombre.invalid && (txtNombre.dirty || txtNombre.touched)" class="alert alert-danger">
-        <div *ngIf="txtNombre.errors.required">
-          El Nombre es requerido
-        </div>
-        <div *ngIf="txtNombre.errors.minlength">
-          Se necesitan 3 caracteres m&iacute;nimo
-        </div>
-        <div *ngIf="txtNombre.errors.pattern">
-          Solo se admiten letras
-        </div>
-      </div>
-    </div>
-    <!-- Imagen -->
-    <div class="row form-group">
-      <label class="col-sm-12 col-md-4 h4" for="">Imagen: </label>
-      <div class="form-control col-sm-12 col-md-1">
-        <img  src="{{ _servicio.imagen }}" alt="" width="50px" height="50px">          
-      </div>
-      <div class="col-sm-12 col-md-7">
-        <input class="form-control col-sm-12 col-md-7" type="file" alife-file-to-base64
-            (onFileChanged)="convertirArchivo($event)" name="txtImagen" required #txtImagen="ngModel"
-            [(ngModel)]="_convertido" />
-      </div>          
-      <div *ngIf="txtImagen.invalid && (txtImagen.dirty || txtImagen.touched)" class="alert alert-danger">
-        <div *ngIf="txtImagen.errors.required">
-          El Campo Imagen es requerido
+    <div class="card-body">     
+      <!-- Nombre -->
+      <div class="row form-group">
+        <label class="col-sm-12 col-md-4 h4"><b>Nombre: </b></label>
+        <input class="form-control col-sm-12 col-md-8" type="text" id="nombre" name="txtNombre" required
+          minlength="3" pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" #txtNombre="ngModel" [(ngModel)]="_servicio.nombre"/>
+        <div *ngIf="txtNombre.invalid && (txtNombre.dirty || txtNombre.touched)" class="invalid-feedback">
+          <div *ngIf="txtNombre.errors.required">
+            El campo Nombre es requerido
+          </div>
+          <div *ngIf="txtNombre.errors.minlength">
+            Se necesitan 3 caracteres m&iacute;nimo
+          </div>
+          <div *ngIf="txtNombre.errors.pattern">
+            Solo se admiten letras
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Activo -->
-    <div class="row form-group">
-      <label class="col-sm-12 col-md-4 h4" for="idoption">Activo: </label>
-      <input type="radio" class="form-control form-control-sm col-md-2" name="option" #option="ngModel" id="idoption"  [(ngModel)]="_servicio.activo" value="true"> Si
-      <input type="radio" class="form-control form-control-sm col-md-2" name="option" #option="ngModel" id="idoption"  [(ngModel)]="_servicio.activo" value="false"> No
-    </div>
-    <!-- Botones -->
-    <div class="form-group text-center">
-      <button class="btn btn-primary mr-1" [disabled]="!servicioForm.form.valid" (click)="agregarServicio()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-      <button class="btn btn-primary mr-1" (click)="modificarServicio(_servicio)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar</button>            
-      <button class="btn btn-primary mr-1" (click)="limpiarCampos()"><i class="fa fa-trash" aria-hidden="true"></i>Limpiar</button>  
-    </div>
-      <article id="cabecera">
-        <br>
-        <h2 class="text-center">Servicios</h2>
-        <br>              
-      </article>
-      <br>
-      <div id="div1" class="table-responsive">
-        <table class="table text-center">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Imagen</th>
-                <th>Activo</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let _servicio of _servicios" >
-                <th>{{ _servicio.nombre }}</th>
-                <td><img src="{{ _servicio.imagen }}" alt="" width="50px" height="50px"></td>
-                <td>{{ _servicio.activo }}</td>
-                <td> 
-                  <button class="btn btn-primary" (click)="seleccionarServicio(_servicio)" ><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Seleccionar</button>          
-                  <button class="btn btn-danger" (click)="eliminarServicio(_servicio)" ><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Borrar</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+  
+      <!-- Imagen -->
+      <div class="row form-group">
+        <label class="col-sm-12 col-md-4 h4" for=""><b>Imagen: </b></label>
+        <div class="col-sm-12 col-md-1">
+          <img  src="{{ _servicio.imagen }}" alt="" width="50px" height="50px">          
         </div>
-        <br><br>
-        <!-- Afiliados -->
+        <div class="col-sm-12 col-md-7">
+        <input class="form-control col-sm-12 col-md-8" type="file" alife-file-to-base64 (onFileChanged)="convertirArchivo($event)" name="txtImagen" required #txtImagen="ngModel" [(ngModel)]="_convertido" accept="image/x-png,image/gif,image/jpeg" />
+        </div>        
+        
+        <div *ngIf="txtImagen.invalid && (txtImagen.dirty || txtImagen.touched)" class="invalid-feedback">
+          <div *ngIf="txtImagen.errors.required">
+            El campo Imagen es requerido
+          </div>
+        </div>
+      </div>
+
+      <!-- Activo -->
+      <div class="form-group row">
+        <label class="col-sm-12 col-md-4 h4" for="idoption"><b>Estado: </b></label>
+        <input type="radio" class="form-control form-control-sm col-md-2" name="option" #option="ngModel" id="idoption" [(ngModel)]="_servicio.activo" value="true"> Si
+        <input type="radio" class="form-control form-control-sm col-md-2" name="option" #option="ngModel" id="idoption" [(ngModel)]="_servicio.activo" value="false"> No
+      </div>
+
+        <!-- Botones -->
+        <div class="form-group text-center">
+        <button class="btn btn-primary mr-1" [disabled]="!servicioForm.form.valid" (click)="agregarServicio()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+        <button class="btn btn-primary mr-1" (click)="modificarServicio(_servicio)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar</button>            
+        <button class="btn btn-primary mr-1" (click)="limpiarCampos()"><i class="fa fa-trash" aria-hidden="true"></i>Limpiar</button>
+        
+      </div>
+      <br><br>
+      <!-- Afiliados -->
+      <div *ngIf="seleccion==true">
         <article id="cabecera">
           <br>
           <h2 class="text-center">Agregar Afiliado</h2>
           <br>              
         </article>
-        <br><br>
-        <div class="row form-group text-center" >
-          <label class="col-sm-12 col-md-4 h4">Nombre: </label>
-          <select id="idafiliado" class="form-control col-sm-12 col-md-7" name="afiliado" #afiliado="ngModel"
-                [(ngModel)] = "afiliadoaux">
-            <option *ngFor="let afiliado of afiliados" [ngValue]="afiliado">{{afiliado.dni}}-{{afiliado.nombres}}-{{afiliado.apellido}}</option> 
-          </select>
-          <br>
-        </div>
-        <div class="col text-center" >
-          <button  class="btn btn-secondary ml-2 mr-2 col-md-4" (click)="agregarAfiliado(afiliadoaux)" ><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Agregar</button>
-        </div>   
       <br><br>
-        <!-- Afiliados del servicio -->
-        <article id="cabecera">
-          <br>
-          <h2 class="text-center">Afiliados del Servicio</h2>
-          <br>              
-        </article>
+      
+      <div class="row form-group text-center" >
+        <label class="col-sm-12 col-md-4 h4">Nombre: </label>
+        <select id="idafiliado" class="form-control col-sm-12 col-md-7" name="afiliado" #afiliado="ngModel"
+              [(ngModel)] = "afiliadoaux">
+          <option *ngFor="let afiliado of afiliados" [ngValue]="afiliado">{{afiliado.dni}}-{{afiliado.nombres}}-{{afiliado.apellido}}</option> 
+        </select>
         <br>
-        <div id="div2" class="table-responsive">
-          <table class="table text-center">
-            <thead>
-              <tr>
-                <th>DNI</th>
-                <th>Nombre/s</th>
-                <th>Apellido</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let af of _servicio.afiliadosInsc">
-                <th>{{af.dni}}</th>
-                <td>{{af.nombres}}</td>
-                <td>{{af.apellido}}</td>
-                <td>           
-                  <button class="btn btn-danger" (click)="borrarAfiliado(af)" ><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Borrar</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      </div>
+      <div class="col text-center" >
+        <button  [disabled]="!afiliado.dirty" class="btn btn-secondary ml-2 mr-2 col-md-4" (click)="agregarAfiliado(afiliadoaux)"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Agregar</button>
       </div>
       </div>
-    </form> 
+      
+      <br><br>
+      <!-- Afiliados del servicio -->
+      
+      <div *ngIf="seleccion==true">
+      <div class="card-subtitle subtitulo text-center h4">Afiliados del Servicio</div>
+      <br>
+      <div  class="table-responsive">
+        <table class="table text-center" [mfData]="_servicio.afiliadosInsc" #mf="mfDataTable" [mfRowsOnPage]="3">
+          <thead>
+            <tr>
+              <th>DNI</th>
+              <th>Nombre/s</th>
+              <th>Apellido</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let af of mf.data">
+              <th>{{af.dni}}</th>
+              <td>{{af.nombres}}</td>
+              <td>{{af.apellido}}</td>
+              <td>           
+                <button class="btn btn-danger" (click)="borrarAfiliado(af)" >Borrar</button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">
+                <mfBootstrapPaginator [rowsOnPageSet]="[3,10,25]"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+    </div>
+    </div>
+    </div>
+  </form> 
 </div>

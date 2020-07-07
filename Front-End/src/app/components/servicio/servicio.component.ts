@@ -6,6 +6,7 @@ import { Afiliado } from 'src/app/models/afiliado';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import * as printJS from 'print-js';
 
 @Component({
   selector: 'app-servicio',
@@ -21,29 +22,28 @@ export class ServicioComponent implements OnInit {
   afiliados: Array<Afiliado>;
   afiliadoslista: Array<Afiliado>;
   afiliadoaux:Afiliado;
-
+  _servicioExtra: Array<any>;
+  seleccion:boolean = false;
+  
   constructor(private _servicioService: ServicioService,private toastr:ToastrService,private afiliadoService: AfiliadoService, private router:Router, private loginService: LoginService) { 
-     //validacion por ruta
-     if (!loginService.userLoggedIn) {
+    if (!loginService.userLoggedIn) {
       this.router.navigateByUrl('/login');
-    }
-    
+    } 
     this._servicio = new Servicio();
-    this._servicio.activo=true;
+    this._servicio.activo=true;  
     this._servicioAuxiliar = new Servicio();
     this._servicios = new Array<Servicio>();
+    this._servicioExtra = [];
     this.obtenerServicios();
     this.refrescarAfiliados();
   }
 
-  /*Refresca los servicios por si se creo uno nuevo*/
   public obtenerServicios() {
     var servicio:Servicio = new Servicio();
     this._servicios = new Array<Servicio>();
     this._servicioService.getServicios().subscribe(
       (result)=>{(
         result.forEach(element => {
-          console.log(result);
           Object.assign(servicio, element);
           this._servicios.push(servicio);
           servicio = new Servicio();
@@ -56,8 +56,6 @@ export class ServicioComponent implements OnInit {
     console.log(this._servicio.afiliadosInsc);
   }
 
-/*asigna la imagen procesada y la asigna al servicio 
-luego llama a modificarServicioService para completar la accion*/
   public modificarServicio(servicio) {
     if (this._convertido != "") {
       servicio.imagen = this._convertido;
@@ -67,23 +65,20 @@ luego llama a modificarServicioService para completar la accion*/
     }
   }
 
-    /* Verifica que el servicio a agregar no tenga el mismo nombre de uno ya existente */
-    public agregarServicio() {
-      var _banderaControl: boolean = false;
-      for (var i in this._servicios) {
-        if (this._servicios[i].nombre == this._servicio.nombre) {
-          _banderaControl = true;
-        }
-      }
-      if (_banderaControl) {
-        this.toastr.error("Nombre del servicio repetido");
-      } else {
-        this.agregarServicioService(); 
+  public agregarServicio() {
+    var _banderaControl: boolean = false;
+    for (var i in this._servicios) {
+      if (this._servicios[i].nombre == this._servicio.nombre) {
+        _banderaControl = true;
       }
     }
+    if (_banderaControl) {
+      this.toastr.error("Nombre del servicio repetido");
+    } else {
+      this.agregarServicioService(); 
+    }
+  }
     
-
-  /* Agrega el nuevo servicio  */
   public agregarServicioService() {
     this._servicio.imagen = this._convertido;
     console.log(this._servicio);
@@ -91,7 +86,7 @@ luego llama a modificarServicioService para completar la accion*/
       (result) => {
         this.obtenerServicios();
         this._convertido = "";
-        this.toastr.info('Servicio Agregado Exitosamente');
+        this.toastr.success('Servicio Agregado Correctamente');
       },
       (error) => {
         console.log(error);
@@ -100,13 +95,12 @@ luego llama a modificarServicioService para completar la accion*/
     this.limpiarCampos();
   }
 
-  /*limpia los campos del formulario */
   public limpiarCampos() {
+    this.seleccion = false;
     this._servicio = new Servicio();
-    this.afiliadoaux = new Afiliado();
+    
   }
 
-  /* Convierte una imagen a string */
   public convertirArchivo(file) {
     if (file != null) {
       console.log("Archivo cambiado..", file);
@@ -116,7 +110,6 @@ luego llama a modificarServicioService para completar la accion*/
     }
   }
 
-  /* Modifica el  servicio y limpia las variables utilizadas para una proxima operacion*/
   public modificarServicioService(servicio) {
     this._servicioService.updateServicio(servicio).subscribe(
       (result)=>{
@@ -124,7 +117,6 @@ luego llama a modificarServicioService para completar la accion*/
         this._servicioAuxiliar = new Servicio();
         this._convertido = "";
         this.toastr.info('Servicio Modificado Exitosamente');
-
       },
       (error)=>{
         console.log(error);
@@ -133,35 +125,34 @@ luego llama a modificarServicioService para completar la accion*/
     this.limpiarCampos();
   }
 
-  /* Elimina un servicio */
   public eliminarServicio(servicio) {
-    console.log(servicio);
-    this._servicioService.deleteServicio(servicio._id).subscribe(
-      (result) => {
-        this.obtenerServicios();
-        this.toastr.info('Servicio Eliminado Exitosamente');
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
+    if(servicio.activo==false){
+      this._servicioService.deleteServicio(servicio._id).subscribe(
+        (result) => {
+          this.obtenerServicios();
+          this.toastr.info('Servicio Eliminado Correctamente');
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+    } else {
+      this.toastr.error('No se puede eliminar porque el servicio esta activo');
+    }
+    
   }
 
   public auxiliarServicio(servicio) {
     this._servicioAuxiliar = servicio;
   }
 
-  ngOnInit(): void {
-  }
-
   public seleccionarServicio(servicio: Servicio) {
+    this.seleccion = true;
     var tservicio = new Servicio();
     Object.assign(tservicio,servicio);
     this._servicio = tservicio;
   }
 
-  /*En caso de que se haya agregado un nuevo afiliado va a actualizar su lista para 
-  permitirme agregar si asi fuere a un servicio */
   refrescarAfiliados(){
     var afiliado:Afiliado = new Afiliado();
     this.afiliados = new Array<Afiliado>();
@@ -177,31 +168,64 @@ luego llama a modificarServicioService para completar la accion*/
         console.log(error);
       }
     )
-
   }
 
-  /*Controla que no hayan repetidos y Asigna el afiliado seleccionado 
-  a la lista de afiliados de dicho servicio */
   agregarAfiliado(afiliadoaux){
-
     var _banderaControl: boolean = false;
-      for (var i in this._servicio.afiliadosInsc) {
-        if (this._servicio.afiliadosInsc[i].dni == this.afiliadoaux.dni) {
-          _banderaControl = true;
-        }
+    for (var i in this._servicio.afiliadosInsc) {
+      if (this._servicio.afiliadosInsc[i].dni == this.afiliadoaux.dni) {
+        _banderaControl = true;
       }
-      if (_banderaControl) {
-        this.toastr.error("El afiliado ya cuenta con el servicio");
-      } else {
-        this._servicio.afiliadosInsc.push(this.afiliadoaux);     
-      }
+    }
+    if (_banderaControl) {
+      this.toastr.error("El afiliado ya cuenta con el servicio");
+    } else {
+      this._servicio.afiliadosInsc.push(this.afiliadoaux);
+      this.toastr.info("Haga click en *Modificar para registrar los nuevos afiliados al servicio");     
+      this.afiliadoaux = new Afiliado();
+    }
   }
-
- 
 
   borrarAfiliado(afiliado:Afiliado){
     var indice = this._servicio.afiliadosInsc.findIndex((element)=> element._id == afiliado._id);
     this._servicio.afiliadosInsc.splice(indice, 1);
+  }
+
+  public imprimirServicios() {
+    this._servicioExtra = [];
+    for (var i in this._servicios) {
+      for (var j in this._servicios[i].afiliadosInsc) {
+        this._servicioExtra.push({ 
+          'nombre': this._servicios[i].nombre,
+          'dni': this._servicios[i].afiliadosInsc[j].dni,
+          'apellido': this._servicios[i].afiliadosInsc[j].apellido,
+          'nombreAfiliado': this._servicios[i].afiliadosInsc[j].nombres
+        });
+      }
+    }
+    printJS({
+      printable: this._servicioExtra, 
+      properties: [
+        { field: 'nombre', displayName: 'Servicio' },
+        { field: 'dni', displayName: 'DNI' },
+        { field: 'apellido', displayName: 'Apellido' },
+        { field: 'nombreAfiliado', displayName: 'Nombres' }
+      ],
+      header: '<h3 class="text-center">Listado de Servicios con Afiliados</h3>',
+      type: 'json'
+    });
+  }
+
+  mostrarEstado(estado:Boolean){
+    if(estado==true){
+      return "Activo"
+    }
+    else{
+      return "Inactivo"
+    }
+  }
+
+  ngOnInit(): void {
   }
 
 }
