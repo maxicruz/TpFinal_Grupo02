@@ -26,9 +26,6 @@ export class NovedadComponent implements OnInit {
     this.obtenerNovedades();
   }
 
-  ngOnInit(): void {
-  }
-
   obtenerNovedades(){
     this._novedadService.getNovedades().subscribe(
       (result) => {
@@ -82,7 +79,6 @@ export class NovedadComponent implements OnInit {
     );
   }
 
-
   public modificarNovedad(novedad:Novedad){
     this._novedadService.updateNovedad(novedad).subscribe(
       (result)=>{
@@ -103,6 +99,9 @@ export class NovedadComponent implements OnInit {
     else{
       return "Pendiente"
     }
+  }
+
+  ngOnInit(): void {
   }
 
 }

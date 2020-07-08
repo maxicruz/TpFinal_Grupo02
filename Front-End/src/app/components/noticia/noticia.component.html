@@ -1,7 +1,7 @@
 <div class="container mt-3">
-  <form class="card" #noticiaForm="ngForm">
+  <form class="card" #noticiaForm="ngForm" class="was-validated">
     <article id="cabecera">
-      <br>
+      <br><br>
       <h2 class="text-center">Gesti&oacute;n de Noticias</h2>
       <br>
       <p class="text-center">Complete el Formulario para la noticia</p>
@@ -10,7 +10,7 @@
     <div class="card-body">   
     <!-- titulo -->
       <div class="form-group row">
-        <label for="idtitulo" class="col-sm-12 col-md-4 h4">Titulo: </label>
+        <label for="idtitulo" class="col-sm-12 col-md-4 h4"><b>Titulo: </b></label>
         <input id="idtitulo" class="form-control col-sm-12 col-md-7" required 
               type="text" name="titulo" #txtTitulo="ngModel"
               [(ngModel)]="_noticia.titulo"/>
@@ -22,7 +22,7 @@
       </div>
     <!-- descripcion -->
       <div class="form-group row">
-        <label for="iddescripcion" class="col-sm-12 col-md-4 h4">Descripcion: </label>
+        <label for="iddescripcion" class="col-sm-12 col-md-4 h4"><b>Descripcion: </b></label>
         <input id="iddescripcion" class="form-control col-sm-12 col-md-7" required 
               type="text" name="descripcion" #txtDescripcion="ngModel"
               [(ngModel)]="_noticia.descripcion"/>
@@ -34,7 +34,7 @@
       </div>
     <!-- Fecha -->
       <div class="form-group row">
-      <label for="idfecha" class="col-sm-12 col-md-4 h4">Fecha: </label>
+      <label for="idfecha" class="col-sm-12 col-md-4 h4"><b>Fecha: </b></label>
       <input id="idfecha" class="form-control col-sm-12 col-md-7" required           
       type="datetime-local" name="fecha" #txtFecha="ngModel"
           [(ngModel)]="_noticia.fecha"/>
@@ -47,7 +47,7 @@
 
   <!-- Imagen -->
   <div class="row form-group">
-    <label class="col-sm-12 col-md-4 h4" for="">Imagen: </label>
+    <label class="col-sm-12 col-md-4 h4" for=""><b>Imagen: </b></label>
     <input class="form-control col-sm-12 col-md-7" type="file" alife-file-to-base64 (onFileChanged)="convertirArchivo($event)" name="txtImagen" required #txtImagen="ngModel" [(ngModel)]="_convertido" />
     <div *ngIf="txtImagen.invalid && (txtImagen.dirty || txtImagen.touched)" class="alert alert-danger">
       <div *ngIf="txtImagen.errors.required">
@@ -58,7 +58,7 @@
 
     <!-- Vigente -->
       <div class="form-group row">
-          <label for="idvigente" class="col-sm-12 col-md-4 h4">Vigente: </label>
+          <label for="idvigente" class="col-sm-12 col-md-4 h4"><b>Vigente: </b></label>
           <input id="idvigente" class="form-control col-sm-12 col-md-7" type="checkbox" name="vigente" 
             [(ngModel)]="_noticia.vigente"/> 
       </div>  
@@ -75,7 +75,7 @@
   
   <h2 class="text-center mt-3">Informaci&oacute;n de Noticia</h2>
   <!-- Tabla -->
-  <table class="table">
+  <table class="table text-center">
       <thead>
         <tr>
           <th scope="col">Titulo</th>
@@ -91,13 +91,13 @@
         <tr *ngFor="let _noticia of _noticias" >
           <td>{{ _noticia.titulo }}</td>
           <td>{{ _noticia.descripcion }}</td>
-          <td>{{ _noticia.fecha }}</td>
+          <td>{{ _noticia.fecha | date:"dd-MM-yyyy" }}</td>
           <td>{{ _noticia.usuario.usuario }}</td>
           <td><img src="{{ _noticia.imagen }}" alt="" width="50px" height="50px"></td>
           <td><input type="checkbox" [checked]="_noticia.vigente"/> </td>
           <td> 
-            <button class="btn btn-primary" (click)="seleccionarNoticia(_noticia)"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Seleccionar</button>          
-            <button class="btn btn-danger" (click)="eliminarNoticia(_noticia)"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Borrar</button>
+            <button class="btn btn-primary mr-1" (click)="seleccionarNoticia(_noticia)"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Seleccionar</button>          
+            <button class="btn btn-danger mr-1" (click)="eliminarNoticia(_noticia)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Borrar</button>
           </td>
         </tr>
       </tbody>

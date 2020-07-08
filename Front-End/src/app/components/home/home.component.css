@@ -1,6 +1,6 @@
 /* CONTENIDO:DA UN RENGLON DE MARGEN  */
 section{
-	margin: 1rem ;
+	margin: 1rem;
 }
 /* CONTENIDO:brinda una imagen de fondo al contenido*/
 #cabecera{
@@ -15,8 +15,8 @@ section{
     color:white;   
     text-shadow: 4px 4px 4px #333;
     text-align: center;
-	 font-size: 25px;
-   font-weight: bold;
+	font-size: 25px;
+    font-weight: bold;
 }
 /* CONTENIDO:brinda estilo a los parrafos del contenido */
 #cabecera p{
@@ -27,24 +27,18 @@ section{
 /* ----------------------------------------------------------------------------------------------------------- */
 /* CONTENIDO DE LA PAGINA - 2do section */
 /* CAJA DE SECCION */
-.container{
-    
-}
 .caja{
     border: solid #5B6DCD 5px;
 	padding: 15px;
+	margin:0px auto;
 }
 .container .caja{
 	box-shadow:0 5px 15px rgba(0,0,0,.4);
 	text-align: center;
     border-radius: 4px;
 	box-sizing:border-box;
-	overflow: hidden;
-	margin: 5px 0px 0px 0px;
-	/* margin: 15px 0px 15px 15px;*/
+	overflow: hidden;	
 }
-
-
 /* EFECTO DE cajas de Seccion*/
 /* cajas de Seccion 1*/
 .container .caja:nth-child(1) {
@@ -89,13 +83,13 @@ section{
 }
 
 .face{
-	 background-color:#3B5998;
-	 color:white;
+	background-color:#3B5998;
+	color:white;
 }
 
 .google{
 	background-color: #DD4B39;
-	 color:white;
+	color:white;
 }
 .twitter{
 	background-color:  #55ACEE;

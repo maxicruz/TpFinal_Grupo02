@@ -8,7 +8,7 @@
         <div class="card-body">
         <!-- descripcion -->
         <div class="form-group row">
-            <label for="iddescripcion" class="col-sm-12 col-md-4 h4">Descripcion</label>
+            <label for="iddescripcion" class="col-sm-12 col-md-4 h4"><b>Descripcion</b></label>
             <input id="iddescripcion" class="form-control form-control-sm col-md-7" required 
             type="text" name="descripcion" #txtDescripcion="ngModel"
             [(ngModel)]="_novedad.texto"/>                
@@ -22,7 +22,7 @@
         <!-- Botones -->
         <div class="form-group text-center">
             <button class="btn btn-success ml-2 mr-2" [disabled]="!novedad1Form.form.valid" (click)="agregarNovedad()">&nbsp;Enviar</button>
-            <button class="btn btn-secondary ml-2 mr-2" (click)="limpiarCampos()">&nbsp;Limpiar</button>
+            <button class="btn btn-secondary ml-2 mr-2" (click)="limpiarCampos()"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Limpiar</button>
         </div>
       </div>
     </form>
@@ -47,8 +47,8 @@
             <td>{{ mostrarEstado(novedad.estado) }}</td>
             <td><input type="checkbox" [(ngModel)]="novedad.estado"/> </td>
             <td>       
-              <button class="btn btn-danger" (click)="eliminarNovedad(novedad)" ><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Borrar</button>
-              <button class="btn btn-secondary" (click)="modificarNovedad(novedad)" ><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Modificar</button>              
+              <button class="btn btn-danger" (click)="eliminarNovedad(novedad)"><i class="icon-remove"></i>&nbsp;Borrar</button>
+              <button class="btn btn-secondary" (click)="modificarNovedad(novedad)"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Modificar</button>              
             </td>
           </tr>
         </tbody>

@@ -6,6 +6,7 @@ import { NgxDataTableModule } from "angular-9-datatable";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlifeFileToBase64Module } from 'alife-file-to-base64';
+import { FilterPipe } from './pipes/filter.pipe';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +25,6 @@ import { ServicioComponent } from './components/servicio/servicio.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { NoticiaComponent } from './components/noticia/noticia.component';
 import { NovedadComponent } from './components/novedad/novedad.component';
-import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,6 @@ import { FilterPipe } from './pipes/filter.pipe';
       positionClass: 'toast-top-center',
       preventDuplicates: true,
     }),
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

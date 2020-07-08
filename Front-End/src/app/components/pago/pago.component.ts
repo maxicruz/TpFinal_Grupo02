@@ -18,6 +18,7 @@ export class PagoComponent implements OnInit {
   _pago: Pago;
   _pagos: Array<Pago>;
   _afiliados: Array<Afiliado>;
+  editMode:boolean=false;
 
   constructor(private _afiliadoService: AfiliadoService, private _pagoService: PagoService, private _toastr: ToastrService, private router:Router, private _loginService: LoginService) {  
     if (!_loginService.userLoggedIn) {

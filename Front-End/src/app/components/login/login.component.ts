@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,15 +13,15 @@ export class LoginComponent implements OnInit {
 
   userform: Usuario = new Usuario();
   returnUrl: string;
-  _msglogin: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/inicio';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
 
   login() {
@@ -35,9 +36,10 @@ export class LoginComponent implements OnInit {
             this.loginService.userLogged = user;
             //redirigimos a home o a pagina que llamo
             this.router.navigateByUrl(this.returnUrl);
+            this.toastr.info("Usuario logueado");
           } else {
             //usuario no encontrado  muestro mensaje en la vista
-            this._msglogin = "Credenciales incorrectas..";
+            this.toastr.error("Credenciales incorrectas..");
           }
         },
         error => {

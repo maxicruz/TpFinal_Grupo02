@@ -39,7 +39,7 @@ export class NoticiaService {
     const httpOptions = {
       headers: new HttpHeaders({
       })
-    };
+    }; 
     return this._http.delete( this.URL + _noticia._id , httpOptions );
   }
 }

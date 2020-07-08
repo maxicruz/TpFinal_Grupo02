@@ -21,9 +21,9 @@
           <td><img src="{{ _servicio.imagen }}" alt="" width="50px" height="50px"></td>
           <td>{{ mostrarEstado(_servicio.activo)}}</td>
           <td> 
-            <button class="btn btn-primary" (click)="seleccionarServicio(_servicio)" ><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Seleccionar</button>  
+            <button class="btn btn-primary mr-1" (click)="seleccionarServicio(_servicio)" ><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Seleccionar</button>  
             <!-- Eliminar -->        
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal" (click)="auxiliarServicio(_servicio)" ><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Borrar</button>
+            <button class="btn btn-danger mr-1" type="button" data-toggle="modal" data-target="#eliminarModal" (click)="auxiliarServicio(_servicio)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Borrar</button>
             <!-- Eliminar Modal -->
             <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="eliminarModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -38,8 +38,8 @@
                     <h6>{{ _servicioAuxiliar.nombre }}</h6>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="eliminarServicio(_servicioAuxiliar)">Si</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger mr-1" data-dismiss="modal" (click)="eliminarServicio(_servicioAuxiliar)">Si</button>
+                    <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">No</button>
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@
       </tbody>      
     </table>
     <div class="text-center">
-      <button class="btn btn-primary" (click)="imprimirServicios()">Imprimir Servicios</button>
+      <button class="btn btn-primary" (click)="imprimirServicios()"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Imprimir Servicios</button>
     </div>
   </div>
   <br><br>
@@ -67,7 +67,7 @@
       <!-- Nombre -->
       <div class="row form-group">
         <label class="col-sm-12 col-md-4 h4"><b>Nombre: </b></label>
-        <input class="form-control col-sm-12 col-md-8" type="text" id="nombre" name="txtNombre" required
+        <input class="form-control col-sm-12 col-md-7" type="text" id="nombre" name="txtNombre" required
           minlength="3" pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" #txtNombre="ngModel" [(ngModel)]="_servicio.nombre"/>
         <div *ngIf="txtNombre.invalid && (txtNombre.dirty || txtNombre.touched)" class="invalid-feedback">
           <div *ngIf="txtNombre.errors.required">
@@ -102,16 +102,15 @@
       <!-- Activo -->
       <div class="form-group row">
         <label class="col-sm-12 col-md-4 h4" for="idoption"><b>Estado: </b></label>
-        <input type="radio" class="form-control form-control-sm col-md-2" name="option" #option="ngModel" id="idoption" [(ngModel)]="_servicio.activo" value="true"> Si
-        <input type="radio" class="form-control form-control-sm col-md-2" name="option" #option="ngModel" id="idoption" [(ngModel)]="_servicio.activo" value="false"> No
+        <input type="radio" class="form-control col-sm-12 col-md-2" name="option" #option="ngModel" id="idoption" [(ngModel)]="_servicio.activo" value="true"><h4>Si</h4>
+        <input type="radio" class="form-control col-sm-12 col-md-2" name="option" #option="ngModel" id="idoption" [(ngModel)]="_servicio.activo" value="false"><h4>No</h4>
       </div>
 
-        <!-- Botones -->
-        <div class="form-group text-center">
-        <button class="btn btn-primary mr-1" [disabled]="!servicioForm.form.valid" (click)="agregarServicio()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-        <button class="btn btn-primary mr-1" (click)="modificarServicio(_servicio)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar</button>            
-        <button class="btn btn-primary mr-1" (click)="limpiarCampos()"><i class="fa fa-trash" aria-hidden="true"></i>Limpiar</button>
-        
+      <!-- Botones -->
+      <div class="form-group text-center">
+        <button class="btn btn-primary mr-1" [disabled]="!servicioForm.form.valid" (click)="agregarServicio()"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Guardar</button>
+        <button class="btn btn-primary mr-1" (click)="modificarServicio(_servicio)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modificar</button>            
+        <button class="btn btn-primary mr-1" (click)="limpiarCampos()"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Limpiar</button>  
       </div>
       <br><br>
       <!-- Afiliados -->
@@ -132,7 +131,7 @@
         <br>
       </div>
       <div class="col text-center" >
-        <button  [disabled]="!afiliado.dirty" class="btn btn-secondary ml-2 mr-2 col-md-4" (click)="agregarAfiliado(afiliadoaux)"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Agregar</button>
+        <button  [disabled]="!afiliado.dirty" class="btn btn-primary ml-2 mr-2 col-md-4" (click)="agregarAfiliado(afiliadoaux)"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Agregar</button>
       </div>
       </div>
       
@@ -157,8 +156,8 @@
               <th>{{af.dni}}</th>
               <td>{{af.nombres}}</td>
               <td>{{af.apellido}}</td>
-              <td>           
-                <button class="btn btn-danger" (click)="borrarAfiliado(af)" >Borrar</button>
+              <td>            
+                <button class="btn btn-danger" (click)="borrarAfiliado(af)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Borrar</button>
               </td>
             </tr>
           </tbody>

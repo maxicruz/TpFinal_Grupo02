@@ -33,4 +33,5 @@ export class PagoService {
   public deletePago(_id: any) {
     return this._http.delete(this.URL + "/" + _id);
   }
+  
 }

@@ -32,4 +32,5 @@ export class ServicioService {
   public deleteServicio(_id: any) {
     return this._http.delete(this.URL + "/" + _id);
   }
+  
 }

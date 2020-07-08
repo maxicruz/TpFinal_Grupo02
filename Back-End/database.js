@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-
-// librerias que fueron actualizadas 
+// librerias que fueron actualizadas y son permiso de ejecucion permitir o no
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);

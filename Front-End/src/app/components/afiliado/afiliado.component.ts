@@ -16,23 +16,21 @@ import * as printJS from 'print-js';
   styleUrls: ['./afiliado.component.css']
 })
 export class AfiliadoComponent implements OnInit {
+  
 	buscado:string;
   _afiliado: Afiliado;
   _afiliadoAuxiliar: Afiliado;
   _afiliados: Array<Afiliado>;
   _pagos: Array<Pago>;
   _servicios: Array<Servicio>;
-
   _convertido: string;
   _dniModificarOriginal: number;
   _dniModificar: number;
 
   constructor(private _afiliadoService: AfiliadoService, private _pagoService: PagoService, private _servicioService: ServicioService, private _toastr: ToastrService, private _router: Router, private _loginService: LoginService) {
-    // Validacion por ruta
     if (!_loginService.userLoggedIn) {
       this._router.navigateByUrl('/login');
-    }
-    
+    }  
     this._afiliado = new Afiliado();
     this._afiliadoAuxiliar = new Afiliado();
     this._afiliados = new Array<Afiliado>();
@@ -42,9 +40,6 @@ export class AfiliadoComponent implements OnInit {
     this.obtenerServicios();
   }
 
-
-  
-  /* Obtiene una lista de afiliados */
   public obtenerAfiliados() {
     this._afiliadoService.getAfiliados().subscribe(
       (result) => {
@@ -58,7 +53,6 @@ export class AfiliadoComponent implements OnInit {
     )
   }
 
-  /* Agrega un afiliado */
   public agregarAfiliado() {
     var _existeDni: boolean = false;
     for (var i in this._afiliados) {
@@ -73,7 +67,6 @@ export class AfiliadoComponent implements OnInit {
     }
   }
 
-  /* Service de Agregar Afiliado */
   public agregarAfiliadoService(_afiliado) {
     this._afiliado.imagen = this._convertido;
     this._afiliadoService.addAfiliado(this._afiliado).subscribe(
@@ -89,7 +82,6 @@ export class AfiliadoComponent implements OnInit {
     this.limpiarCampos();
   }
 
-  /* Convierte una imagen a string */
   public convertirArchivo(file) {
     if (file != null) {
       console.log("Archivo cambiado..", file);
@@ -99,7 +91,6 @@ export class AfiliadoComponent implements OnInit {
     }
   }
 
-  /* Modifica un afiliado */
   public modificarAfiliado(afiliado) {
     if (this._dniModificar == this._dniModificarOriginal) {
       afiliado.dni = this._dniModificar;
@@ -120,7 +111,6 @@ export class AfiliadoComponent implements OnInit {
     }
   }
 
-  /* Valida si hubo un cambio de imagen */
   public validarImagen(afiliado) {
     if (this._convertido != "") {
       afiliado.imagen = this._convertido
@@ -130,7 +120,6 @@ export class AfiliadoComponent implements OnInit {
     }
   }
 
-  /* Service de Modificar Afiliado */
   public modificarAfiliadoService(afiliado) {
     this._afiliadoService.updateAfiliado(afiliado).subscribe(
       (result) => {
@@ -145,11 +134,9 @@ export class AfiliadoComponent implements OnInit {
     );
   }
 
-  /* Elimina un afiliado */
   public eliminarAfiliado(afiliado) {
     var _existePago = false;
     var _existeServicio = false;
-
     for (var i in this._pagos) {
       if (this._pagos[i].afiliado._id == afiliado._id) {
         _existePago = true;
@@ -169,7 +156,6 @@ export class AfiliadoComponent implements OnInit {
     }
   }
 
-  /* Service de Eliminar Afiliado */
   public eliminarServiceAfiliado(afiliado) {
     this._afiliadoService.deleteAfiliado(afiliado._id).subscribe(
       (result) => {
@@ -183,7 +169,6 @@ export class AfiliadoComponent implements OnInit {
     )
   }
 
-  /* Obtiene lista de pagos */
   public listarPagos() {
     this._pagoService.getPagos().subscribe(
       (result) => {
@@ -200,7 +185,6 @@ export class AfiliadoComponent implements OnInit {
     )
   }
 
-  /* Obtiene lista de servicios */
   public obtenerServicios() {
     this._servicioService.getServicios().subscribe(
       (result) => {
@@ -217,7 +201,6 @@ export class AfiliadoComponent implements OnInit {
     )
   }
 
-  /* Imprime una lista de afiliados */
   public imprimirAfiliados() {
     console.log(this._afiliados);
     printJS({
@@ -245,4 +228,5 @@ export class AfiliadoComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 }

@@ -18,7 +18,6 @@ export class NoticiaComponent implements OnInit {
   _convertido: string;
 
   constructor(private _noticiaService: NoticiaService, private toastr:ToastrService, private router:Router, private loginService: LoginService) { 
-    //validacion por ruta
     if (!loginService.userLoggedIn) {
       this.router.navigateByUrl('/login');
     }
@@ -28,8 +27,6 @@ export class NoticiaComponent implements OnInit {
     this.obtenerNoticias();
   }
 
-  ngOnInit(): void {
-  }
   public obtenerNoticias() {
     this._noticiaService.getNoticias().subscribe(
       (result) => {
@@ -55,7 +52,7 @@ export class NoticiaComponent implements OnInit {
     } else{
           this._noticia.imagen = this._convertido;
           this._noticia.usuario = new Usuario();
-          this._noticia.usuario._id = this.loginService.userLogged._id; //captura id del usuario logeado
+          this._noticia.usuario._id = this.loginService.userLogged._id;
           this._noticiaService.addNoticia(this._noticia).subscribe(
             (result) => {
               this.obtenerNoticias();
@@ -98,7 +95,7 @@ export class NoticiaComponent implements OnInit {
   public modificarNoticia(){
     if (this._convertido != "") {
       this._noticia.imagen = this._convertido;}
-   this._noticiaService.updateNoticia(this._noticia).subscribe(
+      this._noticiaService.updateNoticia(this._noticia).subscribe(
       (result)=>{
         this.obtenerNoticias();
         this.toastr.success('Noticia Modificada Exitosamente');
@@ -109,7 +106,7 @@ export class NoticiaComponent implements OnInit {
     );
     this.limpiarCampos();
   }
-  /* Convierte una imagen a string */
+
   public convertirArchivo(file) {
     if (file != null) {
       console.log("Archivo cambiado..", file);
@@ -118,4 +115,8 @@ export class NoticiaComponent implements OnInit {
       console.log("error");
     }
   }
+
+  ngOnInit(): void {
+  }
+
 }

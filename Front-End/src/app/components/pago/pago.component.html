@@ -64,34 +64,37 @@
         </div>
       </div>
     </div>
-    <div class="card-footer">
-      <!-- Botones -->
-      <div class="form-group text-center">
-        <button type="button" class="btn btn-primary mr-1" [disabled]="!pagoForm.form.valid" (click)="agregarPago('printJS-form')"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Guardar</button>
-        <button type="reset" class="btn btn-primary mr-1" ><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Limpiar</button>
-      </div>
+    <!-- Botones -->
+    <div class="form-group text-center">
+      <button type="button" class="btn btn-primary mr-1" [disabled]="!pagoForm.form.valid" (click)="agregarPago('printJS-form')"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Guardar</button>
+      <button type="reset" class="btn btn-primary mr-1"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Limpiar</button>
     </div>
   </form>
 
   <h2 class="text-center mt-3">Informaci&oacute;n de Pagos</h2>
   <div class="table-responsive">
-    <table class="table" [mfData]="_pagos" #mf="mfDataTable" [mfRowsOnPage]="3">
+    <table class="table text-center" [mfData]="_pagos" #mf="mfDataTable" [mfRowsOnPage]="3">
       <thead>
         <tr>
-          <th>Afiliado</th>
-          <th>Fecha</th>
-          <th>Monto</th>
-          <th>Mes</th>
-          <th>Año</th>
+          <th scope="col">Afiliado</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Mes</th>
+          <th scope="col">Año</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let pago of mf.data">
           <td>{{ pago.afiliado.apellido | uppercase}}, {{ pago.afiliado.nombres }} - {{ pago.afiliado.dni }}</td>
           <td>{{ pago.fecha | date:"dd-MM-yyyy" }}</td>
-          <td>{{ pago.monto }}</td>
+          <td>{{ pago.monto | currency }}</td>
           <td>{{ pago.mes }}</td>
           <td>{{ pago.anio }}</td>
+          <td> 
+            <button class="btn btn-primary mr-1" ><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Seleccionar</button>          
+            <button class="btn btn-danger mr-1" ><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Borrar</button>
+          </td>
         </tr>
       </tbody>
       <tfoot>

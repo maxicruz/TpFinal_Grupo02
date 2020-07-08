@@ -24,18 +24,16 @@ export class LoginService {
 
   public logout() {
     // reseteo las propiedades del service que indican 
-    // que un usuari esta logueado y cual es el usuario logueado
+    // que un usuario esta logueado y cual es el usuario logueado
     this.userLogged = new Usuario();
     this.userLoggedIn = false;  
   }  
 
   public getUsuarios():Observable<any>{
-
     const httpOption = {
       headers: new HttpHeaders({
       }) 
     }
     return this._http.get("http://localhost:3000/api/usuarios/", httpOption);
   }
-
 }

@@ -6,11 +6,11 @@
       <br>
       <p class="text-center">Complete el Formulario para el afiliado</p>
       <br>               
-    </article>
+    </article> 
     <div class="card-body">
       <!-- Apellido -->
       <div class="row form-group">
-        <label class="col-sm-12 col-md-4 h4">Apellido</label>
+        <label class="col-sm-12 col-md-4 h4"><b>Apellido: </b></label>
         <input class="form-control col-sm-12 col-md-7" type="text" id="apellido" name="txtApellido" required minlength="3" pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" #txtApellido="ngModel" [(ngModel)]="_afiliado.apellido" />
         <div *ngIf="txtApellido.invalid && (txtApellido.dirty || txtApellido.touched)" class="invalid-feedback">
           <div *ngIf="txtApellido.errors.required">
@@ -24,10 +24,9 @@
           </div>
         </div>
       </div>
-
       <!-- Nombre -->
       <div class="row form-group">
-        <label class="col-sm-12 col-md-4 h4">Nombre/s</label>
+        <label class="col-sm-12 col-md-4 h4"><b>Nombres: </b></label>
         <input class="form-control col-sm-12 col-md-7" type="text" id="nombre" name="txtNombre" required minlength="3" pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" #txtNombre="ngModel" [(ngModel)]="_afiliado.nombres" />
         <div *ngIf="txtNombre.invalid && (txtNombre.dirty || txtNombre.touched)" class="invalid-feedback">
           <div *ngIf="txtNombre.errors.required">
@@ -41,10 +40,9 @@
           </div>
         </div>
       </div>
-
       <!-- DNI -->
       <div class="row form-group">
-        <label class="col-sm-12 col-md-4 h4">DNI</label>
+        <label class="col-sm-12 col-md-4 h4"><b>DNI: </b></label>
         <input class="form-control col-sm-12 col-md-7" type="text" name="txtDni" required minlength="7"
           pattern="[0-9]{7,20}" #txtDni="ngModel" [(ngModel)]="_afiliado.dni" />
         <div *ngIf="txtDni.invalid && (txtDni.dirty || txtDni.touched)" class="invalid-feedback">
@@ -59,10 +57,9 @@
           </div>
         </div>
       </div>
-
       <!-- Email -->
       <div class="row form-group">
-        <label class="col-sm-12 col-md-4 h4" for="">Email</label>
+        <label class="col-sm-12 col-md-4 h4" for=""><b>Email: </b></label>
         <input class="form-control col-sm-12 col-md-7" type="text" name="txtEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #txtEmail="ngModel" [(ngModel)]="_afiliado.email" />
         <div *ngIf="txtEmail.invalid && (txtEmail.dirty || txtEmail.touched)" class="invalid-feedback">
           <div *ngIf="txtEmail.errors.required">
@@ -73,10 +70,9 @@
           </div>
         </div>
       </div>
-
       <!-- Imagen -->
       <div class="row form-group">
-        <label class="col-sm-12 col-md-4 h4" for="">Imagen</label>
+        <label class="col-sm-12 col-md-4 h4" for=""><b>Imagen: </b></label>
         <input class="form-control col-sm-12 col-md-7" type="file" alife-file-to-base64 (onFileChanged)="convertirArchivo($event)" name="txtImagen" required #txtImagen="ngModel" [(ngModel)]="_convertido" />
         <div *ngIf="txtImagen.invalid && (txtImagen.dirty || txtImagen.touched)" class="invalid-feedback">
           <div *ngIf="txtImagen.errors.required">
@@ -84,10 +80,9 @@
           </div>
         </div>
       </div>
-
       <!-- Telefono -->
       <div class="row form-group">
-        <label class="col-sm-12 col-md-4 h4" for="">Tel&eacute;fono</label>
+        <label class="col-sm-12 col-md-4 h4" for=""><b>Tel&eacute;fono: </b></label>
         <input class="form-control col-sm-12 col-md-7" type="text" name="txtTelefono" required minlength="7" pattern="[0-9]{7,20}" #txtTelefono="ngModel" [(ngModel)]="_afiliado.telefono" />
         <div *ngIf="txtTelefono.invalid && (txtTelefono.dirty || txtTelefono.touched)" class="invalid-feedback">
           <div *ngIf="txtTelefono.errors.required">
@@ -101,27 +96,26 @@
           </div>
         </div>
       </div>
-
       <!-- Botones -->
       <div class="form-group text-center">
-        <button type="button" class="btn btn-success" [disabled]="!afiliadoForm.form.valid" (click)="agregarAfiliado()"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Agregar Afiliado</button>
+        <button type="button" class="btn btn-primary" [disabled]="!afiliadoForm.form.valid" (click)="agregarAfiliado()"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Guardar Afiliado</button>
       </div>
     </div>
   </form>
   <hr>
   <div class="input-group mb-3">
 	  <div class="input-group-prepend">
-		<span class="input-group-text" id="basic-addon3"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;BUSCAR por DNI</span>
+		  <span class="input-group-text" id="basic-addon3"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;BUSCAR por Apellido</span>
 	  </div>
-	  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="buscado" [(ngModel)]="buscado">
+	    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="buscado" [(ngModel)]="buscado">
 	</div>
   <div class="text-center">
-      <button class="btn btn-primary" (click)="imprimirAfiliados()"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Imprimir Afiliados</button>
-    </div>
+    <button class="btn btn-primary" (click)="imprimirAfiliados()"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Imprimir Afiliados</button>
+  </div>
 	<hr>
   <h2 class="text-center mt-3">Informaci&oacute;n de Afiliados</h2>
   <div class="table-responsive">
-    <table class="table">
+    <table class="table text-center">
       <thead>
         <tr>
           <th>Apellido</th>
@@ -143,7 +137,7 @@
           <td>{{ _afiliado.telefono }}</td>
           <td>
             <!-- Modificar -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" (click)="auxiliarAfiliado(_afiliado)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar</button>
+            <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#modificarModal" (click)="auxiliarAfiliado(_afiliado)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modificar</button>
             <!-- Modificar Modal -->
             <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog"
               aria-labelledby="modificarModalLabel" aria-hidden="true">
@@ -173,7 +167,6 @@
                         </div>
                       </div>
                     </div>
-              
                     <!-- Nombre -->
                     <div class="row form-group">
                       <label class="col-sm-12 col-md-4">Nombre/s</label>
@@ -190,7 +183,6 @@
                         </div>
                       </div>
                     </div>
-              
                     <!-- DNI -->
                     <div class="row form-group">
                       <label class="col-sm-12 col-md-4">DNI</label>
@@ -207,7 +199,6 @@
                         </div>
                       </div>
                     </div>
-              
                     <!-- Email -->
                     <div class="row form-group">
                       <label class="col-sm-12 col-md-4" for="">Email</label>
@@ -221,7 +212,6 @@
                         </div>
                       </div>
                     </div>
-              
                     <!-- Imagen -->
                     <div class="row form-group">
                       <label class="col-sm-12 col-md-4" for="">Imagen</label>
@@ -235,7 +225,6 @@
                       Imagen Actual  <img  src="{{ _afiliadoAuxiliar.imagen }}" alt="" width="50px" height="50px">
                       </div>
                     </div>
-              
                     <!-- Telefono -->
                     <div class="row form-group">
                       <label class="col-sm-12 col-md-4" for="">Tel&eacute;fono</label>
@@ -254,18 +243,17 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="modificarAfiliado(_afiliadoAuxiliar)" [disabled]="!afiliadoModificarForm.form.valid"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    <button type="button" class="btn btn-success mr-1" data-dismiss="modal" (click)="modificarAfiliado(_afiliadoAuxiliar)" [disabled]="!afiliadoModificarForm.form.valid"><i class="fa fa-floppy-o" aria-hidden="true"></i>
                       &nbsp;Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>
+                    <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>
                       &nbsp;Cancelar</button>
                   </div>
                   </form>
                 </div>
               </div>
             </div>
-
             <!-- Eliminar -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal" (click)="auxiliarAfiliado(_afiliado)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Eliminar</button>
+            <button type="button" class="btn btn-danger mr-1" data-toggle="modal" data-target="#eliminarModal" (click)="auxiliarAfiliado(_afiliado)"><i class="icon-remove"></i>&nbsp;Eliminar</button>
             <!-- Eliminar Modal -->
             <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="eliminarModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">

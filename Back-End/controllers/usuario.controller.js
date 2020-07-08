@@ -50,7 +50,6 @@ usuarioCtrl.loginUsuario = async (req, res)=>{
   } 
   //el método findOne retorna un objeto que cumpla con los criterios de busqueda
   Usuario.findOne(criteria, function(err, user) {
-
      //el método findOne retorna un objeto que cumpla con los criterios de busqueda
       if (err) {
           res.json({

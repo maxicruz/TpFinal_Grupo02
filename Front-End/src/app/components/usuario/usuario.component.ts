@@ -25,9 +25,6 @@ export class UsuarioComponent implements OnInit {
     this.obtenerUsuarios();
   }
 
-  ngOnInit(): void {
-  }
-
   public obtenerUsuarios() {
     this._usuarioService.getUsuarios().subscribe(
       (result) => {
@@ -100,6 +97,9 @@ export class UsuarioComponent implements OnInit {
       }
     );
     this.limpiarCampos();
+  }
+
+  ngOnInit(): void {
   }
 
 }
