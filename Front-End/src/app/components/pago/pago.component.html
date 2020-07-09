@@ -67,7 +67,7 @@
     <!-- Botones -->
     <div class="form-group text-center">
       <button type="button" class="btn btn-primary mr-1" [disabled]="!pagoForm.form.valid" (click)="agregarPago('printJS-form')"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Guardar</button>
-      <button type="reset" class="btn btn-primary mr-1"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Limpiar</button>
+      <button type="reset" class="btn btn-primary mr-1" (click)="limpiarPago()"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Limpiar</button>
     </div>
   </form>
 

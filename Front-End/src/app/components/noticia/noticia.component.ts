@@ -84,7 +84,7 @@ export class NoticiaComponent implements OnInit {
     this._noticiaService.deleteNoticia(noticia).subscribe(
       (result)=>{
         this.obtenerNoticias();
-        this.toastr.info('Noticia Eliminada Exitosamente');
+        this.toastr.warning('Noticia Eliminada Exitosamente');
       }, 
       (error)=>{
         console.log(error);

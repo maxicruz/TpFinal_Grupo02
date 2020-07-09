@@ -28,15 +28,19 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.userform.usuario, this.userform.password)
       .subscribe(
         (result) => {
-          var user = result;
+          var user = result;    
           console.log(user);
           if (user.status == 1) {
-            //vbles para mostrar-ocultar cosas en el header
+            if(user.activo==true){
+              //vbles para mostrar-ocultar cosas en el header
             this.loginService.userLoggedIn = true;
             this.loginService.userLogged = user;
             //redirigimos a home o a pagina que llamo
             this.router.navigateByUrl(this.returnUrl);
-            this.toastr.info("Usuario logueado");
+            this.toastr.success("Usuario logueado");
+            }else{
+              this.toastr.error("Usuario Bloqueado..");
+            }      
           } else {
             //usuario no encontrado  muestro mensaje en la vista
             this.toastr.error("Credenciales incorrectas..");

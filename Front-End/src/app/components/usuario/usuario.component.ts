@@ -78,7 +78,7 @@ export class UsuarioComponent implements OnInit {
     this._usuarioService.deleteUsuario(usuario).subscribe(
       (result) => {
         this.obtenerUsuarios();
-        this.toastr.info('Usuario Eliminado Correctamente');
+        this.toastr.warning('Usuario Eliminado Correctamente');
       }, 
       (error) => {
         console.log(error);

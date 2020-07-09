@@ -71,7 +71,7 @@ export class NovedadComponent implements OnInit {
     this._novedadService.deleteNovedad(novedad).subscribe(
       (result)=>{
         this.obtenerNovedades();
-        this.toastr.info('Novedad Eliminada Exitosamente');
+        this.toastr.warning('Novedad Eliminada Exitosamente');
       }, 
       (error)=>{
         console.log(error);

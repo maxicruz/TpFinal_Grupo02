@@ -161,7 +161,7 @@ export class AfiliadoComponent implements OnInit {
       (result) => {
         this.obtenerAfiliados();
         this._afiliadoAuxiliar = new Afiliado();
-        this._toastr.info("Afiliado Eliminado Correctamente");
+        this._toastr.warning("Afiliado Eliminado Correctamente");
       },
       (error) => {
         console.log(error);

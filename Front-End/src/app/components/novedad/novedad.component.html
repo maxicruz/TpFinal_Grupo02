@@ -47,8 +47,8 @@
             <td>{{ mostrarEstado(novedad.estado) }}</td>
             <td><input type="checkbox" [(ngModel)]="novedad.estado"/> </td>
             <td>       
-              <button class="btn btn-danger" (click)="eliminarNovedad(novedad)"><i class="icon-remove"></i>&nbsp;Borrar</button>
-              <button class="btn btn-secondary" (click)="modificarNovedad(novedad)"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Modificar</button>              
+              <button class="btn btn-danger mr-2" (click)="eliminarNovedad(novedad)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Borrar</button>
+              <button class="btn btn-secondary mr-2" (click)="modificarNovedad(novedad)"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Modificar</button>              
             </td>
           </tr>
         </tbody>
