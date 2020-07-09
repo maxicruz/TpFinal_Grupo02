@@ -11,7 +11,7 @@ export class FilterPipe implements PipeTransform {
 
     return value.filter(singleItem =>
       singleItem[campo].toLowerCase().includes(args.toLowerCase())      
-      );
+    );
   }
 
 }
